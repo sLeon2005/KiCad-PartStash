@@ -16,7 +16,12 @@ Use this checklist before tagging a usable MVP release or promoting new default 
 - Search `cap hand` and confirm only the capacitor is the best match.
 - Double-click a part and confirm it copies.
 - Confirm copied resistor/capacitor snippets paste into KiCad 9.
+- Search `led 0805` and confirm the LED uses `Device:LED_Small_Filled` and the 0805 hand-solder footprint.
 - Search `crystal 3225` and confirm the crystal uses `Device:Crystal_GND24` and the 3225 hand-solder footprint.
+- Search `mounting m3` and confirm the mounting hole uses `Mechanical:MountingHole_Pad` and the M3 pad-via footprint.
+- Search `mounting m2.5` and confirm the mounting hole uses `Mechanical:MountingHole_Pad` and the M2.5 pad-via footprint.
+- Search `atmega socket` and confirm the ATmega328P uses the DIP-28 long-pad socket footprint.
+- Search `push button` and confirm the switch uses `Switch:SW_Push` and the 6mm THT H5mm footprint.
 
 ## Editing
 

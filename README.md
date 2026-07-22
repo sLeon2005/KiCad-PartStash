@@ -12,7 +12,12 @@ Verified bundled snippets so far:
 
 - Resistor 0805 Hand Solder
 - Capacitor 0805 Hand Solder
+- LED 0805 Hand Solder
 - SMD Crystal 3225 4-Pin Hand Solder
+- ATmega328P DIP-28 Socket
+- Mounting Hole M2.5 Pad Via
+- Mounting Hole M3 Pad Via
+- Push Button 6mm THT
 
 Generated bundled parts so far:
 

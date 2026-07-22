@@ -22,7 +22,7 @@ Status: complete.
 Status: in progress.
 
 - Verify the first real KiCad 9 snippets.
-- Fill the initial default library with trusted resistor/capacitor parts.
+- Fill the initial default library with trusted resistor, capacitor, LED, crystal, ATmega328P, push button, and mounting-hole parts.
 - Improve search ranking.
 - Add keyboard flow: search, enter to copy, escape to clear.
 - Keep notifications subtle and non-blocking.

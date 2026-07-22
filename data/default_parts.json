@@ -1,25 +1,5 @@
 [
   {
-    "id": "resistor-0805-handsolder",
-    "name": "Resistor 0805 Hand Solder",
-    "category": "Passives",
-    "tags": [
-      "resistor",
-      "0805",
-      "smd",
-      "handsolder"
-    ],
-    "symbol": "Device:R_Small_US",
-    "footprint": "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder",
-    "description": "Verified KiCad 9 resistor snippet using the small US resistor symbol and 0805 hand-solder footprint.",
-    "snippet": "(lib_symbols\n\t(symbol \"Device:R_Small_US\"\n\t\t(pin_numbers\n\t\t\t(hide yes)\n\t\t)\n\t\t(pin_names\n\t\t\t(offset 0.254)\n\t\t\t(hide yes)\n\t\t)\n\t\t(exclude_from_sim no)\n\t\t(in_bom yes)\n\t\t(on_board yes)\n\t\t(property \"Reference\" \"R\"\n\t\t\t(at 0.762 0.508 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Value\" \"R_Small_US\"\n\t\t\t(at 0.762 -1.016 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Footprint\" \"\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Datasheet\" \"~\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Description\" \"Resistor, small US symbol\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_keywords\" \"r resistor\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_fp_filters\" \"R_*\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(symbol \"R_Small_US_1_1\"\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 0 1.524) (xy 1.016 1.143) (xy 0 0.762) (xy -1.016 0.381) (xy 0 0)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 0 0) (xy 1.016 -0.381) (xy 0 -0.762) (xy -1.016 -1.143) (xy 0 -1.524)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 0 2.54 270)\n\t\t\t\t(length 1.016)\n\t\t\t\t(name \"~\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 0 -2.54 90)\n\t\t\t\t(length 1.016)\n\t\t\t\t(name \"~\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t)\n\t\t(embedded_fonts no)\n\t)\n)\n(symbol\n\t(lib_id \"Device:R_Small_US\")\n\t(at 33.02 85.09 90)\n\t(unit 1)\n\t(exclude_from_sim no)\n\t(in_bom yes)\n\t(on_board yes)\n\t(dnp no)\n\t(uuid \"f5a3b27b-a531-4a20-bdde-440baef737d7\")\n\t(property \"Reference\" \"R7\"\n\t\t(at 33.02 78.74 90)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Value\" \"2.2K\"\n\t\t(at 33.02 81.28 90)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Footprint\" \"Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder\"\n\t\t(at 33.02 85.09 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Datasheet\" \"~\"\n\t\t(at 33.02 85.09 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Description\" \"Resistor, small US symbol\"\n\t\t(at 33.02 85.09 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(pin \"1\"\n\t\t(uuid \"3b216342-dcfa-4060-be5d-4a1aae44cd6a\")\n\t)\n\t(pin \"2\"\n\t\t(uuid \"fed51325-c13d-41ab-a074-824c9a096e31\")\n\t)\n\t(instances\n\t\t(project \"driverTRIAC\"\n\t\t\t(path \"\"\n\t\t\t\t(reference \"R7\")\n\t\t\t\t(unit 1)\n\t\t\t)\n\t\t)\n\t)\n)\n",
-    "template_fields": [],
-    "default_template_values": {},
-    "verified_with": "KiCad 9",
-    "status": "verified",
-    "source": "default"
-  },
-  {
     "id": "capacitor-0805-handsolder",
     "name": "Capacitor 0805 Hand Solder",
     "category": "Passives",
@@ -32,12 +12,13 @@
     "symbol": "Device:C_Small",
     "footprint": "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder",
     "description": "Verified KiCad 9 capacitor snippet using the small capacitor symbol and 0805 hand-solder footprint.",
-    "snippet": "(lib_symbols\n\t(symbol \"Device:C_Small\"\n\t\t(pin_numbers\n\t\t\t(hide yes)\n\t\t)\n\t\t(pin_names\n\t\t\t(offset 0.254)\n\t\t\t(hide yes)\n\t\t)\n\t\t(exclude_from_sim no)\n\t\t(in_bom yes)\n\t\t(on_board yes)\n\t\t(property \"Reference\" \"C\"\n\t\t\t(at 0.254 1.778 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Value\" \"C_Small\"\n\t\t\t(at 0.254 -2.032 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Footprint\" \"\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Datasheet\" \"~\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Description\" \"Unpolarized capacitor, small symbol\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_keywords\" \"capacitor cap\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_fp_filters\" \"C_*\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(symbol \"C_Small_0_1\"\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -1.524 0.508) (xy 1.524 0.508)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0.3048) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -1.524 -0.508) (xy 1.524 -0.508)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0.3302) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t)\n\t\t(symbol \"C_Small_1_1\"\n\t\t\t(pin passive line\n\t\t\t\t(at 0 2.54 270)\n\t\t\t\t(length 2.032)\n\t\t\t\t(name \"~\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 0 -2.54 90)\n\t\t\t\t(length 2.032)\n\t\t\t\t(name \"~\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t)\n\t\t(embedded_fonts no)\n\t)\n)\n(symbol\n\t(lib_id \"Device:C_Small\")\n\t(at 19.05 106.68 0)\n\t(unit 1)\n\t(exclude_from_sim no)\n\t(in_bom yes)\n\t(on_board yes)\n\t(dnp no)\n\t(fields_autoplaced yes)\n\t(uuid \"d412f370-afa7-4abb-875a-ec5964ca343a\")\n\t(property \"Reference\" \"C99\"\n\t\t(at 21.59 105.4162 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(justify left)\n\t\t)\n\t)\n\t(property \"Value\" \"9999\"\n\t\t(at 21.59 107.9562 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(justify left)\n\t\t)\n\t)\n\t(property \"Footprint\" \"Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder\"\n\t\t(at 19.05 106.68 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Datasheet\" \"~\"\n\t\t(at 19.05 106.68 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Description\" \"Unpolarized capacitor, small symbol\"\n\t\t(at 19.05 106.68 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(pin \"1\"\n\t\t(uuid \"4fc3bfcc-7959-4d3d-8cf7-cf3f917f6d49\")\n\t)\n\t(pin \"2\"\n\t\t(uuid \"fb0ecaf3-720f-4c2a-9bab-104cf351047e\")\n\t)\n\t(instances\n\t\t(project \"\"\n\t\t\t(path \"\"\n\t\t\t\t(reference \"C99\")\n\t\t\t\t(unit 1)\n\t\t\t)\n\t\t)\n\t)\n)\n",
+    "snippet": "(lib_symbols\n\t(symbol \"Device:C_Small\"\n\t\t(pin_numbers\n\t\t\t(hide yes)\n\t\t)\n\t\t(pin_names\n\t\t\t(offset 0.254)\n\t\t\t(hide yes)\n\t\t)\n\t\t(exclude_from_sim no)\n\t\t(in_bom yes)\n\t\t(on_board yes)\n\t\t(property \"Reference\" \"C\"\n\t\t\t(at 0.254 1.778 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Value\" \"C_Small\"\n\t\t\t(at 0.254 -2.032 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Footprint\" \"\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Datasheet\" \"~\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Description\" \"Unpolarized capacitor, small symbol\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_keywords\" \"capacitor cap\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_fp_filters\" \"C_*\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(symbol \"C_Small_0_1\"\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -1.524 0.508) (xy 1.524 0.508)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0.3048) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -1.524 -0.508) (xy 1.524 -0.508)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0.3302) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t)\n\t\t(symbol \"C_Small_1_1\"\n\t\t\t(pin passive line\n\t\t\t\t(at 0 2.54 270)\n\t\t\t\t(length 2.032)\n\t\t\t\t(name \"~\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 0 -2.54 90)\n\t\t\t\t(length 2.032)\n\t\t\t\t(name \"~\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t)\n\t\t(embedded_fonts no)\n\t)\n)\n(symbol\n\t(lib_id \"Device:C_Small\")\n\t(at 19.05 106.68 0)\n\t(unit 1)\n\t(exclude_from_sim no)\n\t(in_bom yes)\n\t(on_board yes)\n\t(dnp no)\n\t(fields_autoplaced yes)\n\t(uuid \"d412f370-afa7-4abb-875a-ec5964ca343a\")\n\t(property \"Reference\" \"C?\"\n\t\t(at 21.59 105.4162 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(justify left)\n\t\t)\n\t)\n\t(property \"Value\" \"9999\"\n\t\t(at 21.59 107.9562 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(justify left)\n\t\t)\n\t)\n\t(property \"Footprint\" \"Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder\"\n\t\t(at 19.05 106.68 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Datasheet\" \"~\"\n\t\t(at 19.05 106.68 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Description\" \"Unpolarized capacitor, small symbol\"\n\t\t(at 19.05 106.68 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(pin \"1\"\n\t\t(uuid \"4fc3bfcc-7959-4d3d-8cf7-cf3f917f6d49\")\n\t)\n\t(pin \"2\"\n\t\t(uuid \"fb0ecaf3-720f-4c2a-9bab-104cf351047e\")\n\t)\n\t(instances\n\t\t(project \"\"\n\t\t\t(path \"\"\n\t\t\t\t(reference \"C?\")\n\t\t\t\t(unit 1)\n\t\t\t)\n\t\t)\n\t)\n)\n",
     "template_fields": [],
     "default_template_values": {},
     "verified_with": "KiCad 9",
     "status": "verified",
-    "source": "default"
+    "source": "default",
+    "generator": ""
   },
   {
     "id": "led-0805-handsolder",
@@ -45,18 +26,143 @@
     "category": "Passives",
     "tags": [
       "led",
+      "diode",
+      "0805",
+      "smd",
+      "handsolder",
+      "filled"
+    ],
+    "symbol": "Device:LED_Small_Filled",
+    "footprint": "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder",
+    "description": "Verified KiCad 9 LED snippet using the small filled LED symbol and 0805 hand-solder footprint.",
+    "snippet": "(lib_symbols\n\t(symbol \"Device:LED_Small_Filled\"\n\t\t(pin_numbers\n\t\t\t(hide yes)\n\t\t)\n\t\t(pin_names\n\t\t\t(offset 0.254)\n\t\t\t(hide yes)\n\t\t)\n\t\t(exclude_from_sim no)\n\t\t(in_bom yes)\n\t\t(on_board yes)\n\t\t(property \"Reference\" \"D\"\n\t\t\t(at -1.27 3.175 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t)\n\t\t)\n\t\t(property \"Value\" \"LED_Small_Filled\"\n\t\t\t(at -4.445 -2.54 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t)\n\t\t)\n\t\t(property \"Footprint\" \"\"\n\t\t\t(at 0 0 90)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Datasheet\" \"~\"\n\t\t\t(at 0 0 90)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Description\" \"Light emitting diode, small symbol, filled shape\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Sim.Pins\" \"1=K 2=A\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_keywords\" \"LED diode light-emitting-diode\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_fp_filters\" \"LED* LED_SMD:* LED_THT:*\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(symbol \"LED_Small_Filled_0_1\"\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -0.762 -1.016) (xy -0.762 1.016)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0.254) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 0 0.762) (xy -0.508 1.27) (xy -0.254 1.27) (xy -0.508 1.27) (xy -0.508 1.016)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 0.508 1.27) (xy 0 1.778) (xy 0.254 1.778) (xy 0 1.778) (xy 0 1.524)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 0.762 -1.016) (xy -0.762 0) (xy 0.762 1.016) (xy 0.762 -1.016)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0.254) (type default))\n\t\t\t\t(fill (type outline))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 1.016 0) (xy -0.762 0)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t)\n\t\t(symbol \"LED_Small_Filled_1_1\"\n\t\t\t(pin passive line\n\t\t\t\t(at -2.54 0 0)\n\t\t\t\t(length 1.778)\n\t\t\t\t(name \"K\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 2.54 0 180)\n\t\t\t\t(length 1.778)\n\t\t\t\t(name \"A\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t)\n\t\t(embedded_fonts no)\n\t)\n)\n(symbol\n\t(lib_id \"Device:LED_Small_Filled\")\n\t(at 0 0 0)\n\t(unit 1)\n\t(exclude_from_sim no)\n\t(in_bom yes)\n\t(on_board yes)\n\t(dnp no)\n\t(fields_autoplaced yes)\n\t(uuid \"d2371389-4df2-48e1-a673-02dae8f56341\")\n\t(property \"Reference\" \"D?\"\n\t\t(at 0.0635 -6.35 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Value\" \"LED_Small_Filled\"\n\t\t(at 0.0635 -3.81 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Footprint\" \"LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder\"\n\t\t(at 0 0 90)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Datasheet\" \"~\"\n\t\t(at 0 0 90)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Description\" \"Light emitting diode, small symbol, filled shape\"\n\t\t(at 0 0 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Sim.Pins\" \"1=K 2=A\"\n\t\t(at 0 0 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(pin \"2\"\n\t\t(uuid \"10b7b188-9cdd-4281-92c6-35d04332aba1\")\n\t)\n\t(pin \"1\"\n\t\t(uuid \"8640df34-579e-4ef7-8793-043679a6494a\")\n\t)\n\t(instances\n\t\t(project \"\"\n\t\t\t(path \"\"\n\t\t\t\t(reference \"D?\")\n\t\t\t\t(unit 1)\n\t\t\t)\n\t\t)\n\t)\n)\n",
+    "template_fields": [],
+    "default_template_values": {},
+    "verified_with": "KiCad 9",
+    "status": "verified",
+    "source": "default",
+    "generator": ""
+  },
+  {
+    "id": "resistor-0805-handsolder",
+    "name": "Resistor 0805 Hand Solder",
+    "category": "Passives",
+    "tags": [
+      "resistor",
       "0805",
       "smd",
       "handsolder"
     ],
-    "symbol": "Device:LED",
-    "footprint": "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder",
-    "description": "Default target part. Capture and verify a real KiCad 9 clipboard snippet before using.",
+    "symbol": "Device:R_Small_US",
+    "footprint": "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder",
+    "description": "Verified KiCad 9 resistor snippet using the small US resistor symbol and 0805 hand-solder footprint.",
+    "snippet": "(lib_symbols\n\t(symbol \"Device:R_Small_US\"\n\t\t(pin_numbers\n\t\t\t(hide yes)\n\t\t)\n\t\t(pin_names\n\t\t\t(offset 0.254)\n\t\t\t(hide yes)\n\t\t)\n\t\t(exclude_from_sim no)\n\t\t(in_bom yes)\n\t\t(on_board yes)\n\t\t(property \"Reference\" \"R\"\n\t\t\t(at 0.762 0.508 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Value\" \"R_Small_US\"\n\t\t\t(at 0.762 -1.016 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Footprint\" \"\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Datasheet\" \"~\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Description\" \"Resistor, small US symbol\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_keywords\" \"r resistor\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_fp_filters\" \"R_*\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(symbol \"R_Small_US_1_1\"\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 0 1.524) (xy 1.016 1.143) (xy 0 0.762) (xy -1.016 0.381) (xy 0 0)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 0 0) (xy 1.016 -0.381) (xy 0 -0.762) (xy -1.016 -1.143) (xy 0 -1.524)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 0 2.54 270)\n\t\t\t\t(length 1.016)\n\t\t\t\t(name \"~\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 0 -2.54 90)\n\t\t\t\t(length 1.016)\n\t\t\t\t(name \"~\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t)\n\t\t(embedded_fonts no)\n\t)\n)\n(symbol\n\t(lib_id \"Device:R_Small_US\")\n\t(at 33.02 85.09 90)\n\t(unit 1)\n\t(exclude_from_sim no)\n\t(in_bom yes)\n\t(on_board yes)\n\t(dnp no)\n\t(uuid \"f5a3b27b-a531-4a20-bdde-440baef737d7\")\n\t(property \"Reference\" \"R?\"\n\t\t(at 33.02 78.74 90)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Value\" \"2.2K\"\n\t\t(at 33.02 81.28 90)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Footprint\" \"Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder\"\n\t\t(at 33.02 85.09 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Datasheet\" \"~\"\n\t\t(at 33.02 85.09 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Description\" \"Resistor, small US symbol\"\n\t\t(at 33.02 85.09 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(pin \"1\"\n\t\t(uuid \"3b216342-dcfa-4060-be5d-4a1aae44cd6a\")\n\t)\n\t(pin \"2\"\n\t\t(uuid \"fed51325-c13d-41ab-a074-824c9a096e31\")\n\t)\n\t(instances\n\t\t(project \"driverTRIAC\"\n\t\t\t(path \"\"\n\t\t\t\t(reference \"R?\")\n\t\t\t\t(unit 1)\n\t\t\t)\n\t\t)\n\t)\n)\n",
+    "template_fields": [],
+    "default_template_values": {},
+    "verified_with": "KiCad 9",
+    "status": "verified",
+    "source": "default",
+    "generator": ""
+  },
+  {
+    "id": "crystal-smd-3225-4pin-handsolder",
+    "name": "SMD Crystal 3225 4-Pin Hand Solder",
+    "category": "Passives",
+    "tags": [
+      "crystal",
+      "quartz",
+      "resonator",
+      "smd",
+      "3225",
+      "4pin",
+      "gnd24",
+      "handsolder"
+    ],
+    "symbol": "Device:Crystal_GND24",
+    "footprint": "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm_HandSoldering",
+    "description": "Verified KiCad 9 four-pin SMD crystal using the 3225 hand-solder footprint. Frequency/value is intentionally left generic.",
+    "snippet": "(lib_symbols\n\t(symbol \"Device:Crystal_GND24\"\n\t\t(pin_names\n\t\t\t(offset 1.016)\n\t\t\t(hide yes)\n\t\t)\n\t\t(exclude_from_sim no)\n\t\t(in_bom yes)\n\t\t(on_board yes)\n\t\t(property \"Reference\" \"Y\"\n\t\t\t(at 3.175 5.08 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Value\" \"Crystal_GND24\"\n\t\t\t(at 3.175 3.175 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Footprint\" \"\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Datasheet\" \"~\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Description\" \"Four pin crystal, GND on pins 2 and 4\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_keywords\" \"quartz ceramic resonator oscillator\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_fp_filters\" \"Crystal*\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(symbol \"Crystal_GND24_0_1\"\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -2.54 2.286) (xy -2.54 3.556) (xy 2.54 3.556) (xy 2.54 2.286)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -2.54 0) (xy -2.032 0)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -2.54 -2.286) (xy -2.54 -3.556) (xy 2.54 -3.556) (xy 2.54 -2.286)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -2.032 -1.27) (xy -2.032 1.27)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0.508) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(rectangle\n\t\t\t\t(start -1.143 2.54)\n\t\t\t\t(end 1.143 -2.54)\n\t\t\t\t(stroke (width 0.3048) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 0 3.556) (xy 0 3.81)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 0 -3.81) (xy 0 -3.556)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 2.032 0) (xy 2.54 0)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 2.032 -1.27) (xy 2.032 1.27)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0.508) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t)\n\t\t(symbol \"Crystal_GND24_1_1\"\n\t\t\t(pin passive line\n\t\t\t\t(at -3.81 0 0)\n\t\t\t\t(length 1.27)\n\t\t\t\t(name \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 0 5.08 270)\n\t\t\t\t(length 1.27)\n\t\t\t\t(name \"2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 0 -5.08 90)\n\t\t\t\t(length 1.27)\n\t\t\t\t(name \"4\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"4\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 3.81 0 180)\n\t\t\t\t(length 1.27)\n\t\t\t\t(name \"3\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"3\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t)\n\t\t(embedded_fonts no)\n\t)\n)\n(symbol\n\t(lib_id \"Device:Crystal_GND24\")\n\t(at 35.56 125.73 0)\n\t(unit 1)\n\t(exclude_from_sim no)\n\t(in_bom yes)\n\t(on_board yes)\n\t(dnp no)\n\t(fields_autoplaced yes)\n\t(uuid \"e1c0d116-a54b-42fe-96f2-b73ef9315752\")\n\t(property \"Reference\" \"Y?\"\n\t\t(at 43.18 119.3098 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Value\" \"Crystal_GND24\"\n\t\t(at 43.18 121.8498 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Footprint\" \"Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm_HandSoldering\"\n\t\t(at 35.56 125.73 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Datasheet\" \"~\"\n\t\t(at 35.56 125.73 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Description\" \"Four pin crystal, GND on pins 2 and 4\"\n\t\t(at 35.56 125.73 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(pin \"2\"\n\t\t(uuid \"ba4a601f-b8be-48c8-8d29-11b3942a2a60\")\n\t)\n\t(pin \"4\"\n\t\t(uuid \"1670e4c5-ffb6-4b4a-ae5a-6510c594ba08\")\n\t)\n\t(pin \"1\"\n\t\t(uuid \"eb6d9032-d84e-471a-b211-f6c4a08bd339\")\n\t)\n\t(pin \"3\"\n\t\t(uuid \"b7469282-08de-4fe0-8d67-a7263470af81\")\n\t)\n\t(instances\n\t\t(project \"\"\n\t\t\t(path \"\"\n\t\t\t\t(reference \"Y?\")\n\t\t\t\t(unit 1)\n\t\t\t)\n\t\t)\n\t)\n)\n",
+    "template_fields": [],
+    "default_template_values": {},
+    "verified_with": "KiCad 9",
+    "status": "verified",
+    "source": "default",
+    "generator": ""
+  },
+  {
+    "id": "arduino-isp-header",
+    "name": "Arduino ISP Header",
+    "category": "Connectors",
+    "tags": [
+      "arduino",
+      "isp",
+      "programming",
+      "header"
+    ],
+    "symbol": "Connector_Generic:Conn_02x03_Odd_Even",
+    "footprint": "",
+    "description": "Target part placeholder for the 2x3 ISP connector you prefer.",
     "snippet": "",
     "template_fields": [],
     "default_template_values": {},
     "verified_with": "KiCad 9",
-    "status": "needs_snippet"
+    "status": "needs_snippet",
+    "source": "default",
+    "generator": ""
+  },
+  {
+    "id": "jst-xh-1xn-vertical-250",
+    "name": "JST XH 1xN 2.50mm Vertical",
+    "category": "Connectors",
+    "tags": [
+      "jst",
+      "xh",
+      "connector",
+      "pins",
+      "2.50mm",
+      "vertical",
+      "wire-to-board",
+      "1xn"
+    ],
+    "symbol": "Connector:Conn_01x{{pins_2}}_Pin",
+    "footprint": "Connector_JST:JST_XH_B{{pins}}B-XH-A_1x{{pins_2}}_P2.50mm_Vertical",
+    "description": "Generated KiCad 9 JST XH vertical wire-to-board connector. Copying asks only for pin count; default is 2.",
+    "snippet": "",
+    "template_fields": [
+      "pins"
+    ],
+    "default_template_values": {
+      "pins": "2"
+    },
+    "verified_with": "KiCad 9",
+    "status": "generator",
+    "source": "default",
+    "generator": "connector_jst_xh_vertical"
+  },
+  {
+    "id": "pin-header-1xn-horizontal-254",
+    "name": "Pin Header 1xN 2.54mm Horizontal",
+    "category": "Connectors",
+    "tags": [
+      "header",
+      "pins",
+      "2.54mm",
+      "horizontal"
+    ],
+    "symbol": "Connector_Generic:Conn_01x{{pins_2}}",
+    "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x{{pins_2}}_P2.54mm_Horizontal",
+    "description": "Variable pin header. Only the pin count should be requested when copying.",
+    "snippet": "",
+    "template_fields": [
+      "pins"
+    ],
+    "default_template_values": {
+      "pins": "4"
+    },
+    "verified_with": "KiCad 9",
+    "status": "needs_snippet",
+    "source": "default",
+    "generator": ""
   },
   {
     "id": "pin-header-1xn-vertical-254",
@@ -114,58 +220,6 @@
     "generator": "connector_1xn_socket_vertical"
   },
   {
-    "id": "jst-xh-1xn-vertical-250",
-    "name": "JST XH 1xN 2.50mm Vertical",
-    "category": "Connectors",
-    "tags": [
-      "jst",
-      "xh",
-      "connector",
-      "pins",
-      "2.50mm",
-      "vertical",
-      "wire-to-board",
-      "1xn"
-    ],
-    "symbol": "Connector:Conn_01x{{pins_2}}_Pin",
-    "footprint": "Connector_JST:JST_XH_B{{pins}}B-XH-A_1x{{pins_2}}_P2.50mm_Vertical",
-    "description": "Generated KiCad 9 JST XH vertical wire-to-board connector. Copying asks only for pin count; default is 2.",
-    "snippet": "",
-    "template_fields": [
-      "pins"
-    ],
-    "default_template_values": {
-      "pins": "2"
-    },
-    "verified_with": "KiCad 9",
-    "status": "generator",
-    "source": "default",
-    "generator": "connector_jst_xh_vertical"
-  },
-  {
-    "id": "pin-header-1xn-horizontal-254",
-    "name": "Pin Header 1xN 2.54mm Horizontal",
-    "category": "Connectors",
-    "tags": [
-      "header",
-      "pins",
-      "2.54mm",
-      "horizontal"
-    ],
-    "symbol": "Connector_Generic:Conn_01x{{pins_2}}",
-    "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x{{pins_2}}_P2.54mm_Horizontal",
-    "description": "Variable pin header. Only the pin count should be requested when copying.",
-    "snippet": "",
-    "template_fields": [
-      "pins"
-    ],
-    "default_template_values": {
-      "pins": "4"
-    },
-    "verified_with": "KiCad 9",
-    "status": "needs_snippet"
-  },
-  {
     "id": "terminal-block-508-2pin",
     "name": "Terminal Block 5.08mm 2 Pin",
     "category": "Connectors",
@@ -182,45 +236,9 @@
     "template_fields": [],
     "default_template_values": {},
     "verified_with": "KiCad 9",
-    "status": "needs_snippet"
-  },
-  {
-    "id": "atmega328p",
-    "name": "ATmega328P",
-    "category": "ICs",
-    "tags": [
-      "mcu",
-      "avr",
-      "arduino",
-      "atmega328p"
-    ],
-    "symbol": "MCU_Microchip_ATmega:ATmega328P-*",
-    "footprint": "",
-    "description": "Target part placeholder. Choose and capture the package you use most often.",
-    "snippet": "",
-    "template_fields": [],
-    "default_template_values": {},
-    "verified_with": "KiCad 9",
-    "status": "needs_snippet"
-  },
-  {
-    "id": "arduino-isp-header",
-    "name": "Arduino ISP Header",
-    "category": "Connectors",
-    "tags": [
-      "arduino",
-      "isp",
-      "programming",
-      "header"
-    ],
-    "symbol": "Connector_Generic:Conn_02x03_Odd_Even",
-    "footprint": "",
-    "description": "Target part placeholder for the 2x3 ISP connector you prefer.",
-    "snippet": "",
-    "template_fields": [],
-    "default_template_values": {},
-    "verified_with": "KiCad 9",
-    "status": "needs_snippet"
+    "status": "needs_snippet",
+    "source": "default",
+    "generator": ""
   },
   {
     "id": "usb-b-female",
@@ -238,49 +256,106 @@
     "template_fields": [],
     "default_template_values": {},
     "verified_with": "KiCad 9",
-    "status": "needs_snippet"
+    "status": "needs_snippet",
+    "source": "default",
+    "generator": ""
   },
   {
-    "id": "crystal-smd-3225-4pin-handsolder",
-    "name": "SMD Crystal 3225 4-Pin Hand Solder",
-    "category": "Passives",
+    "id": "atmega328p",
+    "name": "ATmega328P DIP-28 Socket",
+    "category": "ICs",
     "tags": [
-      "crystal",
-      "quartz",
-      "resonator",
-      "smd",
-      "3225",
-      "4pin",
-      "gnd24",
-      "handsolder"
+      "mcu",
+      "avr",
+      "arduino",
+      "atmega328p",
+      "dip28",
+      "socket",
+      "tht"
     ],
-    "symbol": "Device:Crystal_GND24",
-    "footprint": "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm_HandSoldering",
-    "description": "Verified KiCad 9 four-pin SMD crystal using the 3225 hand-solder footprint. Frequency/value is intentionally left generic.",
-    "snippet": "(lib_symbols\n\t(symbol \"Device:Crystal_GND24\"\n\t\t(pin_names\n\t\t\t(offset 1.016)\n\t\t\t(hide yes)\n\t\t)\n\t\t(exclude_from_sim no)\n\t\t(in_bom yes)\n\t\t(on_board yes)\n\t\t(property \"Reference\" \"Y\"\n\t\t\t(at 3.175 5.08 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Value\" \"Crystal_GND24\"\n\t\t\t(at 3.175 3.175 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Footprint\" \"\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Datasheet\" \"~\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Description\" \"Four pin crystal, GND on pins 2 and 4\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_keywords\" \"quartz ceramic resonator oscillator\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_fp_filters\" \"Crystal*\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(symbol \"Crystal_GND24_0_1\"\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -2.54 2.286) (xy -2.54 3.556) (xy 2.54 3.556) (xy 2.54 2.286)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -2.54 0) (xy -2.032 0)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -2.54 -2.286) (xy -2.54 -3.556) (xy 2.54 -3.556) (xy 2.54 -2.286)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -2.032 -1.27) (xy -2.032 1.27)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0.508) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(rectangle\n\t\t\t\t(start -1.143 2.54)\n\t\t\t\t(end 1.143 -2.54)\n\t\t\t\t(stroke (width 0.3048) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 0 3.556) (xy 0 3.81)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 0 -3.81) (xy 0 -3.556)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 2.032 0) (xy 2.54 0)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 2.032 -1.27) (xy 2.032 1.27)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0.508) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t)\n\t\t(symbol \"Crystal_GND24_1_1\"\n\t\t\t(pin passive line\n\t\t\t\t(at -3.81 0 0)\n\t\t\t\t(length 1.27)\n\t\t\t\t(name \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 0 5.08 270)\n\t\t\t\t(length 1.27)\n\t\t\t\t(name \"2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 0 -5.08 90)\n\t\t\t\t(length 1.27)\n\t\t\t\t(name \"4\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"4\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 3.81 0 180)\n\t\t\t\t(length 1.27)\n\t\t\t\t(name \"3\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"3\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t)\n\t\t(embedded_fonts no)\n\t)\n)\n(symbol\n\t(lib_id \"Device:Crystal_GND24\")\n\t(at 35.56 125.73 0)\n\t(unit 1)\n\t(exclude_from_sim no)\n\t(in_bom yes)\n\t(on_board yes)\n\t(dnp no)\n\t(fields_autoplaced yes)\n\t(uuid \"e1c0d116-a54b-42fe-96f2-b73ef9315752\")\n\t(property \"Reference\" \"Y?\"\n\t\t(at 43.18 119.3098 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Value\" \"Crystal_GND24\"\n\t\t(at 43.18 121.8498 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Footprint\" \"Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm_HandSoldering\"\n\t\t(at 35.56 125.73 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Datasheet\" \"~\"\n\t\t(at 35.56 125.73 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Description\" \"Four pin crystal, GND on pins 2 and 4\"\n\t\t(at 35.56 125.73 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(pin \"2\"\n\t\t(uuid \"ba4a601f-b8be-48c8-8d29-11b3942a2a60\")\n\t)\n\t(pin \"4\"\n\t\t(uuid \"1670e4c5-ffb6-4b4a-ae5a-6510c594ba08\")\n\t)\n\t(pin \"1\"\n\t\t(uuid \"eb6d9032-d84e-471a-b211-f6c4a08bd339\")\n\t)\n\t(pin \"3\"\n\t\t(uuid \"b7469282-08de-4fe0-8d67-a7263470af81\")\n\t)\n\t(instances\n\t\t(project \"\"\n\t\t\t(path \"\"\n\t\t\t\t(reference \"Y?\")\n\t\t\t\t(unit 1)\n\t\t\t)\n\t\t)\n\t)\n)\n",
+    "symbol": "MCU_Microchip_ATmega:ATmega328-P",
+    "footprint": "Package_DIP:DIP-28_W7.62mm_Socket_LongPads",
+    "description": "Verified KiCad 9 ATmega328P DIP-28 snippet using the long-pad socket footprint.",
+    "snippet": "(lib_symbols\n\t(symbol \"MCU_Microchip_ATmega:ATmega328-P\"\n\t\t(exclude_from_sim no)\n\t\t(in_bom yes)\n\t\t(on_board yes)\n\t\t(property \"Reference\" \"U\"\n\t\t\t(at -12.7 36.83 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t)\n\t\t)\n\t\t(property \"Value\" \"ATmega328-P\"\n\t\t\t(at 2.54 -36.83 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t)\n\t\t)\n\t\t(property \"Footprint\" \"Package_DIP:DIP-28_W7.62mm\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27) (italic yes))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Datasheet\" \"http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20with%20picoPower%20Technology%20Data%20Sheet%2040001984A.pdf\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Description\" \"20MHz, 32kB Flash, 2kB SRAM, 1kB EEPROM, DIP-28\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_keywords\" \"AVR 8bit Microcontroller MegaAVR\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_fp_filters\" \"DIP*W7.62mm*\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(symbol \"ATmega328-P_0_1\"\n\t\t\t(rectangle\n\t\t\t\t(start -12.7 -35.56)\n\t\t\t\t(end 12.7 35.56)\n\t\t\t\t(stroke (width 0.254) (type default))\n\t\t\t\t(fill (type background))\n\t\t\t)\n\t\t)\n\t\t(symbol \"ATmega328-P_1_1\"\n\t\t\t(pin passive line\n\t\t\t\t(at -15.24 30.48 0)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"AREF\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"21\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin power_in line\n\t\t\t\t(at 0 38.1 270)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"VCC\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"7\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 0 -38.1 90)\n\t\t\t\t(length 2.54)\n\t\t\t\t(hide yes)\n\t\t\t\t(name \"GND\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"22\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin power_in line\n\t\t\t\t(at 0 -38.1 90)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"GND\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"8\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin power_in line\n\t\t\t\t(at 2.54 38.1 270)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"AVCC\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"20\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 30.48 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PB0\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"14\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 27.94 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PB1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"15\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 25.4 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PB2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"16\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 22.86 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PB3\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"17\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 20.32 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PB4\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"18\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 17.78 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PB5\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"19\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 15.24 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"XTAL1/PB6\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"9\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 12.7 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"XTAL2/PB7\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"10\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 7.62 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PC0\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"23\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 5.08 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PC1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"24\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 2.54 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PC2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"25\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 0 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PC3\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"26\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 -2.54 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PC4\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"27\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 -5.08 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PC5\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"28\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 -7.62 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"~{RESET}/PC6\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 -12.7 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PD0\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 -15.24 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PD1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"3\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 -17.78 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PD2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"4\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 -20.32 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PD3\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"5\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 -22.86 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PD4\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"6\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 -25.4 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PD5\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"11\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 -27.94 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PD6\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"12\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin bidirectional line\n\t\t\t\t(at 15.24 -30.48 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"PD7\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"13\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t)\n\t\t(embedded_fonts no)\n\t)\n)\n(symbol\n\t(lib_id \"MCU_Microchip_ATmega:ATmega328-P\")\n\t(at 0 0 0)\n\t(unit 1)\n\t(exclude_from_sim no)\n\t(in_bom yes)\n\t(on_board yes)\n\t(dnp no)\n\t(fields_autoplaced yes)\n\t(uuid \"ff0b1aa3-b692-4c02-be35-ee5304816686\")\n\t(property \"Reference\" \"U?\"\n\t\t(at -21.59 -36.9002 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Value\" \"ATmega328-P\"\n\t\t(at -21.59 -34.3602 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Footprint\" \"Package_DIP:DIP-28_W7.62mm_Socket_LongPads\"\n\t\t(at 0 0 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27) (italic yes))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Datasheet\" \"http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20with%20picoPower%20Technology%20Data%20Sheet%2040001984A.pdf\"\n\t\t(at 0 0 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Description\" \"20MHz, 32kB Flash, 2kB SRAM, 1kB EEPROM, DIP-28\"\n\t\t(at 0 0 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(pin \"21\"\n\t\t(uuid \"3710d5bd-6380-4de3-a546-f05cfb35bee3\")\n\t)\n\t(pin \"7\"\n\t\t(uuid \"e464e163-9186-4235-bbcc-2372d647dc28\")\n\t)\n\t(pin \"22\"\n\t\t(uuid \"72f1fedb-0a71-478a-b3c5-5cee12eead36\")\n\t)\n\t(pin \"8\"\n\t\t(uuid \"4c88a644-1392-4e23-8f70-b0d18d0fbb61\")\n\t)\n\t(pin \"20\"\n\t\t(uuid \"7ca780a3-ead5-4fe1-9802-327ceee3b88e\")\n\t)\n\t(pin \"14\"\n\t\t(uuid \"11712ca2-baca-403c-b4b1-9999bbbab8d2\")\n\t)\n\t(pin \"15\"\n\t\t(uuid \"1fdd9286-69eb-4863-9ab4-edb4ee8d114f\")\n\t)\n\t(pin \"16\"\n\t\t(uuid \"6230fc7f-100f-4be8-83ff-2e2bb6faef55\")\n\t)\n\t(pin \"17\"\n\t\t(uuid \"9c1423f8-5e14-4ac0-9637-25506f462ffc\")\n\t)\n\t(pin \"18\"\n\t\t(uuid \"dcba0507-9be7-4606-85f9-6b09a277620c\")\n\t)\n\t(pin \"19\"\n\t\t(uuid \"cb2746e1-2a9d-404f-8fd5-0c23a4aef078\")\n\t)\n\t(pin \"9\"\n\t\t(uuid \"d6def441-dd95-4c70-898c-4ab6da8a80a1\")\n\t)\n\t(pin \"10\"\n\t\t(uuid \"bf31f88c-c9c4-4f19-b243-2d3e83e1a23b\")\n\t)\n\t(pin \"23\"\n\t\t(uuid \"272af334-97cf-43ec-adfe-385f03a61ae2\")\n\t)\n\t(pin \"24\"\n\t\t(uuid \"e9c14ff8-b557-457c-87e4-b3d4c191b72f\")\n\t)\n\t(pin \"25\"\n\t\t(uuid \"935f18d2-b51f-4662-8f8c-4ba2404cce8d\")\n\t)\n\t(pin \"26\"\n\t\t(uuid \"62acdfc1-bb98-4101-8994-bd351327d543\")\n\t)\n\t(pin \"27\"\n\t\t(uuid \"f65ea681-a389-4123-824e-8d05b7cb9ca2\")\n\t)\n\t(pin \"28\"\n\t\t(uuid \"7c0739f8-d8b9-4035-b034-f8dede0f28cc\")\n\t)\n\t(pin \"1\"\n\t\t(uuid \"985d1af3-7de9-4c98-9bbb-5bd3dabc0216\")\n\t)\n\t(pin \"2\"\n\t\t(uuid \"e01bcd53-d409-439e-b1eb-b7ccd3e963fe\")\n\t)\n\t(pin \"3\"\n\t\t(uuid \"c1a34924-e6e2-49c5-9839-92d0a8cd26d5\")\n\t)\n\t(pin \"4\"\n\t\t(uuid \"bcf6e553-f52f-49d9-927b-0b121667efbf\")\n\t)\n\t(pin \"5\"\n\t\t(uuid \"baaaf216-7a19-4ea1-86d1-9c3f85d57082\")\n\t)\n\t(pin \"6\"\n\t\t(uuid \"740b41e5-8dda-4752-a67d-5b226d907ed5\")\n\t)\n\t(pin \"11\"\n\t\t(uuid \"de823d3f-418a-4bed-9cb6-8a831acd0a0d\")\n\t)\n\t(pin \"12\"\n\t\t(uuid \"e9bc9616-67e5-4017-abf1-b1c26d79f8be\")\n\t)\n\t(pin \"13\"\n\t\t(uuid \"087fdbf3-c14d-4830-bc89-8df4c7fe62c4\")\n\t)\n\t(instances\n\t\t(project \"\"\n\t\t\t(path \"\"\n\t\t\t\t(reference \"U?\")\n\t\t\t\t(unit 1)\n\t\t\t)\n\t\t)\n\t)\n)\n",
     "template_fields": [],
     "default_template_values": {},
     "verified_with": "KiCad 9",
     "status": "verified",
-    "source": "default"
+    "source": "default",
+    "generator": ""
   },
   {
-    "id": "push-button",
-    "name": "Push Button",
-    "category": "Switches",
+    "id": "mounting-hole-m25-pad-via",
+    "name": "Mounting Hole M2.5 Pad Via",
+    "category": "Mechanical",
     "tags": [
-      "button",
-      "switch",
-      "reset"
+      "mounting",
+      "hole",
+      "m2.5",
+      "m25",
+      "mechanical",
+      "pad",
+      "via",
+      "screw"
     ],
-    "symbol": "Switch:SW_Push",
-    "footprint": "",
-    "description": "Target part placeholder until the preferred push button footprint is captured.",
-    "snippet": "",
+    "symbol": "Mechanical:MountingHole_Pad",
+    "footprint": "MountingHole:MountingHole_2.7mm_M2.5_Pad_Via",
+    "description": "Verified KiCad 9 connected M2.5 mounting hole with pad and vias.",
+    "snippet": "(lib_symbols\n\t(symbol \"Mechanical:MountingHole_Pad\"\n\t\t(pin_numbers\n\t\t\t(hide yes)\n\t\t)\n\t\t(pin_names\n\t\t\t(offset 1.016)\n\t\t\t(hide yes)\n\t\t)\n\t\t(exclude_from_sim no)\n\t\t(in_bom no)\n\t\t(on_board yes)\n\t\t(property \"Reference\" \"H\"\n\t\t\t(at 0 6.35 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t)\n\t\t)\n\t\t(property \"Value\" \"MountingHole_Pad\"\n\t\t\t(at 0 4.445 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t)\n\t\t)\n\t\t(property \"Footprint\" \"\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Datasheet\" \"~\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Description\" \"Mounting Hole with connection\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_keywords\" \"mounting hole\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_fp_filters\" \"MountingHole*Pad*\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(symbol \"MountingHole_Pad_0_1\"\n\t\t\t(circle\n\t\t\t\t(center 0 1.27)\n\t\t\t\t(radius 1.27)\n\t\t\t\t(stroke (width 1.27) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t)\n\t\t(symbol \"MountingHole_Pad_1_1\"\n\t\t\t(pin input line\n\t\t\t\t(at 0 -2.54 90)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t)\n\t\t(embedded_fonts no)\n\t)\n)\n(symbol\n\t(lib_id \"Mechanical:MountingHole_Pad\")\n\t(at 0 0 0)\n\t(unit 1)\n\t(exclude_from_sim no)\n\t(in_bom no)\n\t(on_board yes)\n\t(dnp no)\n\t(fields_autoplaced yes)\n\t(uuid \"d069b5d5-79a5-44d6-8c01-363343ae0921\")\n\t(property \"Reference\" \"H?\"\n\t\t(at 2.54 -2.5401 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Value\" \"M2.5\"\n\t\t(at 2.54 -0.0001 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Footprint\" \"MountingHole:MountingHole_2.7mm_M2.5_Pad_Via\"\n\t\t(at 0 0 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Datasheet\" \"~\"\n\t\t(at 0 0 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Description\" \"Mounting Hole with connection\"\n\t\t(at 0 0 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(pin \"1\"\n\t\t(uuid \"5edb770b-f7a3-4ed1-8f21-fa8fee888be2\")\n\t)\n\t(instances\n\t\t(project \"\"\n\t\t\t(path \"\"\n\t\t\t\t(reference \"H?\")\n\t\t\t\t(unit 1)\n\t\t\t)\n\t\t)\n\t)\n)\n",
     "template_fields": [],
     "default_template_values": {},
     "verified_with": "KiCad 9",
-    "status": "needs_snippet"
+    "status": "verified",
+    "source": "default",
+    "generator": ""
+  },
+  {
+    "id": "mounting-hole-m3-pad-via",
+    "name": "Mounting Hole M3 Pad Via",
+    "category": "Mechanical",
+    "tags": [
+      "mounting",
+      "hole",
+      "m3",
+      "mechanical",
+      "pad",
+      "via",
+      "screw"
+    ],
+    "symbol": "Mechanical:MountingHole_Pad",
+    "footprint": "MountingHole:MountingHole_3.2mm_M3_Pad_Via",
+    "description": "Verified KiCad 9 connected M3 mounting hole with pad and vias.",
+    "snippet": "(lib_symbols\n\t(symbol \"Mechanical:MountingHole_Pad\"\n\t\t(pin_numbers\n\t\t\t(hide yes)\n\t\t)\n\t\t(pin_names\n\t\t\t(offset 1.016)\n\t\t\t(hide yes)\n\t\t)\n\t\t(exclude_from_sim no)\n\t\t(in_bom no)\n\t\t(on_board yes)\n\t\t(property \"Reference\" \"H\"\n\t\t\t(at 0 6.35 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t)\n\t\t)\n\t\t(property \"Value\" \"MountingHole_Pad\"\n\t\t\t(at 0 4.445 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t)\n\t\t)\n\t\t(property \"Footprint\" \"\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Datasheet\" \"~\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Description\" \"Mounting Hole with connection\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_keywords\" \"mounting hole\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_fp_filters\" \"MountingHole*Pad*\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(symbol \"MountingHole_Pad_0_1\"\n\t\t\t(circle\n\t\t\t\t(center 0 1.27)\n\t\t\t\t(radius 1.27)\n\t\t\t\t(stroke (width 1.27) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t)\n\t\t(symbol \"MountingHole_Pad_1_1\"\n\t\t\t(pin input line\n\t\t\t\t(at 0 -2.54 90)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t)\n\t\t(embedded_fonts no)\n\t)\n)\n(symbol\n\t(lib_id \"Mechanical:MountingHole_Pad\")\n\t(at 0 0 0)\n\t(unit 1)\n\t(exclude_from_sim no)\n\t(in_bom no)\n\t(on_board yes)\n\t(dnp no)\n\t(fields_autoplaced yes)\n\t(uuid \"93d3ae54-8413-47ee-b8c5-02f66ba6ce75\")\n\t(property \"Reference\" \"H?\"\n\t\t(at 2.54 -2.5401 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Value\" \"M3\"\n\t\t(at 2.54 -0.0001 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Footprint\" \"MountingHole:MountingHole_3.2mm_M3_Pad_Via\"\n\t\t(at 0 0 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Datasheet\" \"~\"\n\t\t(at 0 0 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Description\" \"Mounting Hole with connection\"\n\t\t(at 0 0 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(pin \"1\"\n\t\t(uuid \"7cd696cb-4ffa-4569-ad13-4be11c91496d\")\n\t)\n\t(instances\n\t\t(project \"\"\n\t\t\t(path \"\"\n\t\t\t\t(reference \"H?\")\n\t\t\t\t(unit 1)\n\t\t\t)\n\t\t)\n\t)\n)\n",
+    "template_fields": [],
+    "default_template_values": {},
+    "verified_with": "KiCad 9",
+    "status": "verified",
+    "source": "default",
+    "generator": ""
+  },
+  {
+    "id": "push-button",
+    "name": "Push Button 6mm THT",
+    "category": "Switches",
+    "tags": [
+      "switch",
+      "pushbutton",
+      "push-button",
+      "button",
+      "tactile",
+      "tht",
+      "6mm"
+    ],
+    "symbol": "Switch:SW_Push",
+    "footprint": "Button_Switch_THT:SW_PUSH_6mm_H5mm",
+    "description": "Verified KiCad 9 generic two-pin push button using the classic 6mm THT H5mm footprint.",
+    "snippet": "(lib_symbols\n\t(symbol \"Switch:SW_Push\"\n\t\t(pin_numbers\n\t\t\t(hide yes)\n\t\t)\n\t\t(pin_names\n\t\t\t(offset 1.016)\n\t\t\t(hide yes)\n\t\t)\n\t\t(exclude_from_sim no)\n\t\t(in_bom yes)\n\t\t(on_board yes)\n\t\t(property \"Reference\" \"SW\"\n\t\t\t(at 1.27 2.54 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Value\" \"SW_Push\"\n\t\t\t(at 0 -1.524 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t)\n\t\t)\n\t\t(property \"Footprint\" \"\"\n\t\t\t(at 0 5.08 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Datasheet\" \"~\"\n\t\t\t(at 0 5.08 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Description\" \"Push button switch, generic, two pins\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_keywords\" \"switch normally-open pushbutton push-button\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(symbol \"SW_Push_0_1\"\n\t\t\t(circle\n\t\t\t\t(center -2.032 0)\n\t\t\t\t(radius 0.508)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 0 1.27) (xy 0 3.048)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(circle\n\t\t\t\t(center 2.032 0)\n\t\t\t\t(radius 0.508)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 2.54 1.27) (xy -2.54 1.27)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at -5.08 0 0)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 5.08 0 180)\n\t\t\t\t(length 2.54)\n\t\t\t\t(name \"2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t)\n\t\t(embedded_fonts no)\n\t)\n)\n(symbol\n\t(lib_id \"Switch:SW_Push\")\n\t(at 0 0 270)\n\t(unit 1)\n\t(exclude_from_sim no)\n\t(in_bom yes)\n\t(on_board yes)\n\t(dnp no)\n\t(fields_autoplaced yes)\n\t(uuid \"3fa2d2a8-1172-4a0e-8da4-74a1689a06cf\")\n\t(property \"Reference\" \"SW?\"\n\t\t(at 3.81 -1.2701 90)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(justify left)\n\t\t)\n\t)\n\t(property \"Value\" \"SW_Push\"\n\t\t(at 3.81 1.2699 90)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(justify left)\n\t\t)\n\t)\n\t(property \"Footprint\" \"Button_Switch_THT:SW_PUSH_6mm_H5mm\"\n\t\t(at 5.08 0 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Datasheet\" \"~\"\n\t\t(at 5.08 0 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Description\" \"Push button switch, generic, two pins\"\n\t\t(at 0 0 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(pin \"2\"\n\t\t(uuid \"7b8655ee-41b6-4fce-a3c8-d499fafd7618\")\n\t)\n\t(pin \"1\"\n\t\t(uuid \"71294e88-72ad-4601-a3d4-892862611c92\")\n\t)\n\t(instances\n\t\t(project \"\"\n\t\t\t(path \"\"\n\t\t\t\t(reference \"SW?\")\n\t\t\t\t(unit 1)\n\t\t\t)\n\t\t)\n\t)\n)",
+    "template_fields": [],
+    "default_template_values": {},
+    "verified_with": "KiCad 9",
+    "status": "verified",
+    "source": "default",
+    "generator": ""
   },
   {
     "id": "atmega328p-minimal-block",
@@ -300,6 +375,8 @@
     "template_fields": [],
     "default_template_values": {},
     "verified_with": "KiCad 9",
-    "status": "planned"
+    "status": "planned",
+    "source": "default",
+    "generator": ""
   }
 ]

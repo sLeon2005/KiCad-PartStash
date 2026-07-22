@@ -4,11 +4,12 @@ import copy
 import tkinter as tk
 import uuid
 from pathlib import Path
-from tkinter import filedialog, messagebox, ttk
+from tkinter import filedialog, font as tkfont, messagebox, ttk
 
 from .models import Part
 from .search import rank_parts
 from .snippet_generators import generate_snippet, generator_template_fields
+from .snippet_references import normalize_reference_designators
 from .snippet_validation import validate_snippet
 from .storage import PartStore
 from .templates import render_template, required_template_fields, unsupported_template_fields
@@ -18,6 +19,96 @@ APP_TITLE = "Kicad-PartStash"
 DEFAULT_STATUS = "Ready."
 PIN_MIN = 1
 PIN_MAX = 64
+
+PREFERRED_FONTS = ("Aptos", "Segoe UI Variable Text", "Segoe UI")
+PREFERRED_MONO_FONTS = ("Cascadia Mono", "Consolas", "Courier New")
+FONT_FAMILY = "Segoe UI"
+MONO_FONT_FAMILY = "Consolas"
+COLOR_APP_BG = "#eef2f7"
+COLOR_PANEL = "#ffffff"
+COLOR_SIDEBAR = "#f7f9fc"
+COLOR_BORDER = "#d9e1ec"
+COLOR_TEXT = "#1f2937"
+COLOR_MUTED = "#64748b"
+COLOR_ACCENT = "#2563eb"
+COLOR_ACCENT_DARK = "#1d4ed8"
+COLOR_DANGER = "#b91c1c"
+COLOR_SUCCESS = "#15803d"
+COLOR_INPUT_BG = "#ffffff"
+COLOR_FIELD_BG = "#fbfdff"
+COLOR_FILTER_ACTIVE_BG = "#dbeafe"
+COLOR_FILTER_ACTIVE_TEXT = "#1e40af"
+
+
+def choose_font(families: tuple[str, ...], fallback: str) -> str:
+    available = set(tkfont.families())
+    for family in families:
+        if family in available:
+            return family
+    return fallback
+
+
+def normalize_padding(padding: int | tuple[int, int] | tuple[int, int, int, int]) -> tuple[int, int, int, int]:
+    if isinstance(padding, int):
+        return (padding, padding, padding, padding)
+    if len(padding) == 2:
+        horizontal, vertical = padding
+        return (horizontal, vertical, horizontal, vertical)
+    return padding
+
+
+class RoundedFrame(tk.Frame):
+    def __init__(
+        self,
+        parent: tk.Misc,
+        fill: str,
+        *,
+        radius: int = 12,
+        padding: int | tuple[int, int] | tuple[int, int, int, int] = 0,
+        outline: str = "",
+        background: str = COLOR_APP_BG,
+        width: int = 1,
+        height: int = 1,
+    ) -> None:
+        super().__init__(parent, bg=background, highlightthickness=0, borderwidth=0)
+        self.fill = fill
+        self.outline = outline or fill
+        self.radius = radius
+        self.padding = normalize_padding(padding)
+        self.canvas = tk.Canvas(self, bg=background, highlightthickness=0, borderwidth=0, width=width, height=height)
+        self.canvas.pack(fill="both", expand=True)
+        self.content = tk.Frame(self.canvas, bg=fill, highlightthickness=0, borderwidth=0)
+        left, top, _, _ = self.padding
+        self.background_id = self.canvas.create_polygon(0, 0, fill=fill, outline=self.outline, smooth=True)
+        self.window_id = self.canvas.create_window(left, top, anchor="nw", window=self.content)
+        self.canvas.bind("<Configure>", self._draw)
+
+    def _draw(self, event: tk.Event) -> None:
+        width = max(event.width, 2)
+        height = max(event.height, 2)
+        left, top, right, bottom = self.padding
+        self.canvas.coords(self.background_id, *rounded_rectangle_points(1, 1, width - 1, height - 1, self.radius))
+        self.canvas.itemconfigure(self.background_id, fill=self.fill, outline=self.outline)
+        self.canvas.coords(self.window_id, left, top)
+        self.canvas.itemconfigure(self.window_id, width=max(1, width - left - right), height=max(1, height - top - bottom))
+
+
+def rounded_rectangle_points(x1: int, y1: int, x2: int, y2: int, radius: int) -> list[int]:
+    radius = max(0, min(radius, (x2 - x1) // 2, (y2 - y1) // 2))
+    return [
+        x1 + radius, y1,
+        x2 - radius, y1,
+        x2, y1,
+        x2, y1 + radius,
+        x2, y2 - radius,
+        x2, y2,
+        x2 - radius, y2,
+        x1 + radius, y2,
+        x1, y2,
+        x1, y2 - radius,
+        x1, y1 + radius,
+        x1, y1,
+    ]
 
 
 class PinDialog(tk.Toplevel):
@@ -68,10 +159,16 @@ class App(tk.Tk):
         self.dirty = False
         self.loading_fields = False
         self.edit_entries: list[ttk.Entry] = []
+        self.category_filter = ""
+        self.filter_buttons: dict[str, ttk.Button] = {}
+        self.more_filter_button: ttk.Button | None = None
 
         self.search_var = tk.StringVar()
         self.status_var = tk.StringVar(value=DEFAULT_STATUS)
         self.validation_var = tk.StringVar(value="Snippet: no snippet selected.")
+        self.detail_title_var = tk.StringVar(value="No part selected")
+        self.detail_subtitle_var = tk.StringVar(value="Search or create a part to start.")
+        self.result_count_var = tk.StringVar(value="0 parts")
         self.field_vars = {
             "name": tk.StringVar(),
             "category": tk.StringVar(),
@@ -83,11 +180,63 @@ class App(tk.Tk):
         }
 
         self.title(APP_TITLE)
-        self.minsize(1040, 640)
+        self.minsize(1080, 680)
+        self.configure(bg=COLOR_APP_BG)
+        self.ui_font = choose_font(PREFERRED_FONTS, FONT_FAMILY)
+        self.mono_font = choose_font(PREFERRED_MONO_FONTS, MONO_FONT_FAMILY)
+        self._configure_style()
         self._build_menu()
         self._build_ui()
         self._bind_events()
         self.load_data()
+        self.after(0, self.maximize_window)
+
+    def _configure_style(self) -> None:
+        style = ttk.Style(self)
+        try:
+            style.theme_use("clam")
+        except tk.TclError:
+            pass
+
+        self.option_add("*Font", (self.ui_font, 10))
+        self.option_add("*Menu.Font", (self.ui_font, 10))
+
+        style.configure(".", font=(self.ui_font, 10), foreground=COLOR_TEXT)
+        style.configure("App.TFrame", background=COLOR_APP_BG)
+        style.configure("Panel.TFrame", background=COLOR_PANEL)
+        style.configure("Sidebar.TFrame", background=COLOR_SIDEBAR)
+        style.configure("Toolbar.TFrame", background=COLOR_PANEL)
+        style.configure("Status.TFrame", background=COLOR_APP_BG)
+
+        style.configure("TLabel", background=COLOR_PANEL, foreground=COLOR_TEXT)
+        style.configure("Sidebar.TLabel", background=COLOR_SIDEBAR, foreground=COLOR_TEXT)
+        style.configure("Title.TLabel", background=COLOR_PANEL, foreground=COLOR_TEXT, font=(self.ui_font, 18, "bold"))
+        style.configure("AppTitle.TLabel", background=COLOR_SIDEBAR, foreground=COLOR_TEXT, font=(self.ui_font, 17, "bold"))
+        style.configure("Section.TLabel", background=COLOR_PANEL, foreground=COLOR_TEXT, font=(self.ui_font, 11, "bold"))
+        style.configure("Field.TLabel", background=COLOR_PANEL, foreground=COLOR_MUTED, font=(self.ui_font, 9, "bold"))
+        style.configure("Muted.TLabel", background=COLOR_PANEL, foreground=COLOR_MUTED)
+        style.configure("SidebarMuted.TLabel", background=COLOR_SIDEBAR, foreground=COLOR_MUTED)
+        style.configure("Status.TLabel", background=COLOR_APP_BG, foreground=COLOR_MUTED)
+        style.configure("StatusSuccess.TLabel", background=COLOR_APP_BG, foreground=COLOR_SUCCESS)
+        style.configure("Validation.TLabel", background=COLOR_PANEL, foreground=COLOR_MUTED)
+
+        style.configure("TEntry", fieldbackground=COLOR_INPUT_BG, bordercolor=COLOR_BORDER, lightcolor=COLOR_BORDER, darkcolor=COLOR_BORDER, padding=5)
+        style.configure("TSpinbox", fieldbackground=COLOR_INPUT_BG, bordercolor=COLOR_BORDER, arrowsize=13, padding=4)
+
+        style.configure("TButton", padding=(10, 6), background="#edf2f7", bordercolor=COLOR_BORDER, focusthickness=1)
+        style.map("TButton", background=[("active", "#e2e8f0")])
+        style.configure("Accent.TButton", foreground="#ffffff", background=COLOR_ACCENT, bordercolor=COLOR_ACCENT_DARK, padding=(12, 7))
+        style.map("Accent.TButton", background=[("active", COLOR_ACCENT_DARK), ("pressed", COLOR_ACCENT_DARK)])
+        style.configure("Ghost.TButton", background=COLOR_SIDEBAR, bordercolor=COLOR_BORDER, padding=(8, 5))
+        style.map("Ghost.TButton", background=[("active", "#e8eef6")])
+        style.configure("Filter.TButton", background=COLOR_SIDEBAR, foreground=COLOR_MUTED, bordercolor=COLOR_BORDER, padding=(3, 2), font=(self.ui_font, 8))
+        style.map("Filter.TButton", background=[("active", "#e8eef6")])
+        style.configure("FilterActive.TButton", background=COLOR_FILTER_ACTIVE_BG, foreground=COLOR_FILTER_ACTIVE_TEXT, bordercolor="#bfdbfe", padding=(3, 2), font=(self.ui_font, 8, "bold"))
+        style.map("FilterActive.TButton", background=[("active", "#bfdbfe")])
+        style.configure("Danger.TButton", foreground=COLOR_DANGER, background="#fff5f5", bordercolor="#fecaca")
+        style.map("Danger.TButton", background=[("active", "#fee2e2")])
+
+        style.configure("Vertical.TScrollbar", background="#e2e8f0", troughcolor=COLOR_PANEL, bordercolor=COLOR_PANEL, arrowcolor=COLOR_MUTED)
 
     def _build_menu(self) -> None:
         menu = tk.Menu(self)
@@ -116,39 +265,112 @@ class App(tk.Tk):
         self.columnconfigure(1, weight=1)
         self.rowconfigure(0, weight=1)
 
-        sidebar = ttk.Frame(self, padding=(12, 12, 6, 8))
-        sidebar.grid(row=0, column=0, sticky="nsew")
-        sidebar.rowconfigure(2, weight=1)
+        sidebar_panel = RoundedFrame(self, fill=COLOR_SIDEBAR, radius=16, padding=(18, 16, 12, 12), outline=COLOR_BORDER, width=360)
+        sidebar_panel.grid(row=0, column=0, sticky="nsew", padx=(12, 10), pady=(12, 0))
+        sidebar = sidebar_panel.content
+        sidebar.rowconfigure(5, weight=1)
         sidebar.columnconfigure(0, weight=1)
 
-        ttk.Label(sidebar, text="Search").grid(row=0, column=0, sticky="w")
-        search_frame = ttk.Frame(sidebar)
-        search_frame.grid(row=1, column=0, columnspan=2, sticky="ew", pady=(4, 10))
+        ttk.Label(sidebar, text="Kicad-PartStash", style="AppTitle.TLabel").grid(row=0, column=0, columnspan=2, sticky="w")
+        ttk.Label(
+            sidebar,
+            text="Trusted KiCad parts, ready to paste",
+            style="SidebarMuted.TLabel",
+        ).grid(row=1, column=0, columnspan=2, sticky="w", pady=(2, 18))
+
+        ttk.Label(sidebar, text="Search", style="Sidebar.TLabel").grid(row=2, column=0, sticky="w")
+        search_frame = ttk.Frame(sidebar, style="Sidebar.TFrame")
+        search_frame.grid(row=3, column=0, columnspan=2, sticky="ew", pady=(5, 8))
         search_frame.columnconfigure(0, weight=1)
         self.search_entry = ttk.Entry(search_frame, textvariable=self.search_var, width=34)
         self.search_entry.grid(row=0, column=0, sticky="ew")
-        ttk.Button(search_frame, text="Clear", width=7, command=self.clear_search_and_focus).grid(
+        ttk.Button(search_frame, text="x", width=3, command=self.clear_search_and_focus, style="Ghost.TButton").grid(
             row=0, column=1, padx=(6, 0)
         )
 
-        self.listbox = tk.Listbox(sidebar, width=38, exportselection=False, activestyle="dotbox")
-        self.listbox.grid(row=2, column=0, sticky="nsew")
-        scrollbar = ttk.Scrollbar(sidebar, orient="vertical", command=self.listbox.yview)
-        scrollbar.grid(row=2, column=1, sticky="ns")
+        filter_frame = ttk.Frame(sidebar, style="Sidebar.TFrame")
+        filter_frame.grid(row=4, column=0, columnspan=2, sticky="w", pady=(0, 8))
+        for label, category, width in [
+            ("All", "", 4),
+            ("Pass", "Passives", 5),
+            ("Conn", "Connectors", 5),
+            ("ICs", "ICs", 4),
+            ("Sw", "Switches", 3),
+            ("Ready", "Ready Blocks", 6),
+        ]:
+            button = ttk.Button(
+                filter_frame,
+                text=label,
+                width=width,
+                style="Filter.TButton",
+                command=lambda selected=category: self.set_category_filter(selected),
+            )
+            button.pack(side="left", padx=(0, 3))
+            self.filter_buttons[category] = button
+        self.more_filter_button = ttk.Button(
+            filter_frame,
+            text="More v",
+            width=6,
+            style="Filter.TButton",
+            command=self.show_category_menu,
+        )
+        self.more_filter_button.pack(side="left")
+
+        list_panel = RoundedFrame(sidebar, fill=COLOR_PANEL, radius=10, padding=1, outline=COLOR_BORDER, background=COLOR_SIDEBAR)
+        list_panel.grid(row=5, column=0, columnspan=2, sticky="nsew", pady=(6, 0))
+        list_frame = list_panel.content
+        list_frame.rowconfigure(0, weight=1)
+        list_frame.columnconfigure(0, weight=1)
+        self.listbox = tk.Listbox(
+            list_frame,
+            width=40,
+            exportselection=False,
+            activestyle="none",
+            borderwidth=0,
+            highlightthickness=1,
+            highlightbackground=COLOR_BORDER,
+            highlightcolor=COLOR_ACCENT,
+            background=COLOR_PANEL,
+            foreground=COLOR_TEXT,
+            selectbackground=COLOR_ACCENT,
+            selectforeground="#ffffff",
+            font=(self.ui_font, 10),
+            relief="flat",
+        )
+        self.listbox.grid(row=0, column=0, sticky="nsew")
+        scrollbar = ttk.Scrollbar(list_frame, orient="vertical", command=self.listbox.yview)
+        scrollbar.grid(row=0, column=1, sticky="ns")
         self.listbox.configure(yscrollcommand=scrollbar.set)
 
-        library_actions = ttk.Frame(sidebar)
-        library_actions.grid(row=3, column=0, columnspan=2, sticky="ew", pady=(10, 0))
+        ttk.Label(sidebar, textvariable=self.result_count_var, style="SidebarMuted.TLabel").grid(
+            row=6, column=0, columnspan=2, sticky="w", pady=(8, 0)
+        )
+
+        library_actions = ttk.Frame(sidebar, style="Sidebar.TFrame")
+        library_actions.grid(row=7, column=0, columnspan=2, sticky="ew", pady=(14, 0))
         for column in range(3):
             library_actions.columnconfigure(column, weight=1)
-        ttk.Button(library_actions, text="New", command=self.new_part).grid(row=0, column=0, sticky="ew", padx=(0, 6))
-        ttk.Button(library_actions, text="Duplicate", command=self.duplicate_selected).grid(row=0, column=1, sticky="ew", padx=(0, 6))
-        ttk.Button(library_actions, text="Delete", command=self.delete_selected).grid(row=0, column=2, sticky="ew")
+        ttk.Button(library_actions, text="New", command=self.new_part, style="Ghost.TButton").grid(
+            row=0, column=0, sticky="ew", padx=(0, 6)
+        )
+        ttk.Button(library_actions, text="Duplicate", command=self.duplicate_selected, style="Ghost.TButton").grid(
+            row=0, column=1, sticky="ew", padx=(0, 6)
+        )
+        ttk.Button(library_actions, text="Delete", command=self.delete_selected, style="Danger.TButton").grid(
+            row=0, column=2, sticky="ew"
+        )
 
-        main = ttk.Frame(self, padding=(10, 12, 12, 8))
-        main.grid(row=0, column=1, sticky="nsew")
+        main_panel = RoundedFrame(self, fill=COLOR_PANEL, radius=16, padding=(18, 16, 18, 12), outline=COLOR_BORDER, width=700)
+        main_panel.grid(row=0, column=1, sticky="nsew", padx=(0, 12), pady=(12, 0))
+        main = main_panel.content
         main.columnconfigure(1, weight=1)
-        main.rowconfigure(9, weight=1)
+        main.rowconfigure(11, weight=1)
+
+        header = ttk.Frame(main, style="Panel.TFrame")
+        header.grid(row=0, column=0, columnspan=3, sticky="ew", pady=(0, 16))
+        header.columnconfigure(0, weight=1)
+        ttk.Label(header, textvariable=self.detail_title_var, style="Title.TLabel").grid(row=0, column=0, sticky="w")
+        ttk.Label(header, textvariable=self.detail_subtitle_var, style="Muted.TLabel").grid(row=1, column=0, sticky="w", pady=(3, 0))
 
         rows = [
             ("Name", "name"),
@@ -159,36 +381,77 @@ class App(tk.Tk):
             ("Status", "status"),
             ("Source", "source"),
         ]
-        for row, (label, key) in enumerate(rows):
-            ttk.Label(main, text=label).grid(row=row, column=0, sticky="w", pady=3, padx=(0, 10))
+        for offset, (label, key) in enumerate(rows, start=1):
+            ttk.Label(main, text=label, style="Field.TLabel").grid(row=offset, column=0, sticky="w", pady=4, padx=(0, 12))
             entry = ttk.Entry(main, textvariable=self.field_vars[key])
             if key == "source":
                 entry.configure(state="readonly")
-            entry.grid(row=row, column=1, sticky="ew", pady=3)
+            entry.grid(row=offset, column=1, columnspan=2, sticky="ew", pady=4)
             self.edit_entries.append(entry)
 
-        ttk.Label(main, text="Description").grid(row=7, column=0, sticky="nw", pady=(10, 3), padx=(0, 10))
-        self.description_text = tk.Text(main, height=4, wrap="word", undo=True)
-        self.description_text.grid(row=7, column=1, sticky="ew", pady=(10, 3))
+        ttk.Label(main, text="Description", style="Section.TLabel").grid(
+            row=8, column=0, columnspan=3, sticky="w", pady=(16, 5)
+        )
+        description_panel = RoundedFrame(main, fill=COLOR_INPUT_BG, radius=10, padding=1, outline=COLOR_BORDER, background=COLOR_PANEL)
+        description_panel.grid(row=9, column=0, columnspan=3, sticky="ew")
+        self.description_text = tk.Text(
+            description_panel.content,
+            height=3,
+            wrap="word",
+            undo=True,
+            borderwidth=0,
+            relief="flat",
+            highlightthickness=0,
+            background=COLOR_INPUT_BG,
+            foreground=COLOR_TEXT,
+            insertbackground=COLOR_TEXT,
+            font=(self.ui_font, 10),
+            padx=8,
+            pady=7,
+        )
+        self.description_text.pack(fill="both", expand=True)
 
-        ttk.Label(main, text="Raw KiCad snippet").grid(row=8, column=0, sticky="nw", pady=(10, 3), padx=(0, 10))
-        self.snippet_text = tk.Text(main, height=14, wrap="none", undo=True)
-        self.snippet_text.grid(row=9, column=1, sticky="nsew")
+        ttk.Label(main, text="Raw KiCad snippet", style="Section.TLabel").grid(
+            row=10, column=0, columnspan=3, sticky="w", pady=(16, 5)
+        )
+        snippet_panel = RoundedFrame(main, fill=COLOR_FIELD_BG, radius=10, padding=1, outline=COLOR_BORDER, background=COLOR_PANEL)
+        snippet_panel.grid(row=11, column=0, columnspan=2, sticky="nsew")
+        self.snippet_text = tk.Text(
+            snippet_panel.content,
+            height=10,
+            wrap="none",
+            undo=True,
+            borderwidth=0,
+            relief="flat",
+            highlightthickness=0,
+            background=COLOR_FIELD_BG,
+            foreground=COLOR_TEXT,
+            insertbackground=COLOR_TEXT,
+            font=(self.mono_font, 9),
+            padx=8,
+            pady=7,
+        )
+        self.snippet_text.pack(fill="both", expand=True)
         snippet_scroll = ttk.Scrollbar(main, orient="vertical", command=self.snippet_text.yview)
-        snippet_scroll.grid(row=9, column=2, sticky="ns")
+        snippet_scroll.grid(row=11, column=2, sticky="ns")
         self.snippet_text.configure(yscrollcommand=snippet_scroll.set)
 
-        ttk.Label(main, textvariable=self.validation_var, wraplength=720).grid(row=10, column=1, sticky="w", pady=(8, 0))
+        ttk.Label(main, textvariable=self.validation_var, wraplength=760, style="Validation.TLabel").grid(
+            row=12, column=0, columnspan=3, sticky="w", pady=(9, 0)
+        )
 
-        actions = ttk.Frame(main)
-        actions.grid(row=11, column=1, sticky="e", pady=(12, 0))
+        actions = ttk.Frame(main, style="Toolbar.TFrame")
+        actions.grid(row=13, column=0, columnspan=3, sticky="e", pady=(14, 0))
         ttk.Button(actions, text="Capture Clipboard", command=self.capture_clipboard_for_selected).grid(
             row=0, column=0, padx=(0, 8)
         )
         ttk.Button(actions, text="Save", command=self.save_current).grid(row=0, column=1, padx=(0, 8))
-        ttk.Button(actions, text="Copy", command=self.copy_selected).grid(row=0, column=2)
+        ttk.Button(actions, text="Copy", command=self.copy_selected, style="Accent.TButton").grid(row=0, column=2)
 
-        ttk.Label(self, textvariable=self.status_var).grid(row=1, column=0, columnspan=2, sticky="w", padx=12, pady=(0, 8))
+        status_bar = ttk.Frame(self, padding=(14, 8, 14, 8), style="Status.TFrame")
+        status_bar.grid(row=1, column=0, columnspan=2, sticky="ew")
+        self.status_label = ttk.Label(status_bar, textvariable=self.status_var, style="Status.TLabel")
+        self.status_label.grid(row=0, column=0, sticky="w")
         self.search_entry.focus_set()
 
     def _bind_events(self) -> None:
@@ -232,6 +495,8 @@ class App(tk.Tk):
             ordered_parts = [parts_by_id[part_id] for part_id in self.filtered_ids if part_id in parts_by_id]
         else:
             ordered_parts = [ranked.part for ranked in rank_parts(self.parts, query, self.recent_ids)]
+        if self.category_filter:
+            ordered_parts = [part for part in ordered_parts if part.category == self.category_filter]
 
         self.listbox.delete(0, tk.END)
         self.filtered_ids = []
@@ -241,6 +506,9 @@ class App(tk.Tk):
             label = f"{prefix} / {part.name}{marker}"
             self.filtered_ids.append(part.id)
             self.listbox.insert(tk.END, label)
+
+        self.update_result_count(query)
+        self.update_filter_buttons()
 
         if current in self.filtered_ids:
             index = self.filtered_ids.index(current)
@@ -261,6 +529,8 @@ class App(tk.Tk):
         self.set_text(self.description_text, "")
         self.set_text(self.snippet_text, "")
         self.validation_var.set("Snippet: no snippet selected.")
+        self.detail_title_var.set("No part selected")
+        self.detail_subtitle_var.set("Search or create a part to start.")
         self.description_text.edit_modified(False)
         self.snippet_text.edit_modified(False)
         self.loading_fields = False
@@ -292,6 +562,8 @@ class App(tk.Tk):
         self.field_vars["tags"].set(", ".join(part.tags))
         self.field_vars["status"].set(part.status)
         self.field_vars["source"].set(part.source)
+        self.detail_title_var.set(part.name)
+        self.detail_subtitle_var.set(self.part_subtitle(part))
         self.set_text(self.description_text, part.description)
         self.set_text(self.snippet_text, part.snippet)
         self.update_validation_summary(part)
@@ -299,6 +571,58 @@ class App(tk.Tk):
         self.snippet_text.edit_modified(False)
         self.dirty = False
         self.loading_fields = False
+
+    def part_subtitle(self, part: Part) -> str:
+        bits = [part.category or "Uncategorized"]
+        if part.status:
+            bits.append(part.status.replace("_", " "))
+        if part.generator:
+            bits.append("generated")
+        if part.source == "user":
+            bits.append("user library")
+        return " - ".join(bits)
+
+    def update_result_count(self, query: str) -> None:
+        count = len(self.filtered_ids)
+        noun = "part" if count == 1 else "parts"
+        scope = f" in {self.category_filter}" if self.category_filter else ""
+        if query:
+            self.result_count_var.set(f"{count} {noun} found{scope}")
+        else:
+            self.result_count_var.set(f"{count} {noun}{scope}")
+
+    def category_options(self) -> list[str]:
+        return sorted({part.category for part in self.parts if part.category})
+
+    def set_category_filter(self, category: str) -> None:
+        self.category_filter = category
+        self.refresh_list()
+
+    def show_category_menu(self) -> None:
+        if self.more_filter_button is None:
+            return
+        menu = tk.Menu(self, tearoff=False)
+        menu.add_command(label="All", command=lambda: self.set_category_filter(""))
+        categories = self.category_options()
+        if categories:
+            menu.add_separator()
+        for category in categories:
+            label = category
+            if category == self.category_filter:
+                label = f"{category} *"
+            menu.add_command(label=label, command=lambda selected=category: self.set_category_filter(selected))
+        x = self.more_filter_button.winfo_rootx()
+        y = self.more_filter_button.winfo_rooty() + self.more_filter_button.winfo_height()
+        menu.tk_popup(x, y)
+
+    def update_filter_buttons(self) -> None:
+        for category, button in self.filter_buttons.items():
+            style = "FilterActive.TButton" if category == self.category_filter else "Filter.TButton"
+            button.configure(style=style)
+        if self.more_filter_button is not None:
+            quick_categories = set(self.filter_buttons)
+            more_active = bool(self.category_filter and self.category_filter not in quick_categories)
+            self.more_filter_button.configure(style="FilterActive.TButton" if more_active else "Filter.TButton")
 
     def find_part(self, part_id: str | None) -> Part | None:
         return next((part for part in self.parts if part.id == part_id), None)
@@ -470,7 +794,7 @@ class App(tk.Tk):
         if validation.warnings:
             self.set_status(f"Copied with warning: {validation.summary()}")
         else:
-            self.set_status(f"Copied: {part.name}")
+            self.set_status(f"Copied: {part.name}", kind="success")
 
     def build_snippet_for_copy(self, part: Part) -> str | None:
         if part.generator:
@@ -478,7 +802,7 @@ class App(tk.Tk):
             values = self.ask_for_template_values(fields, part.default_template_values)
             if values is None:
                 return None
-            return generate_snippet(part.generator, values)
+            return normalize_reference_designators(generate_snippet(part.generator, values))
 
         snippet = part.snippet
         fields = required_template_fields(snippet, part.template_fields)
@@ -488,7 +812,7 @@ class App(tk.Tk):
         values = self.ask_for_template_values(fields, part.default_template_values)
         if values is None:
             return None
-        return render_template(snippet, values)
+        return normalize_reference_designators(render_template(snippet, values))
 
     def ask_for_template_values(
         self, fields: list[str], default_template_values: dict[str, str]
@@ -513,6 +837,7 @@ class App(tk.Tk):
             self.set_status("Clipboard has no text.")
             return
 
+        snippet = normalize_reference_designators(snippet)
         validation = validate_snippet(snippet)
         self.set_text(self.snippet_text, snippet)
         self.update_validation_summary(snippet)
@@ -632,11 +957,32 @@ class App(tk.Tk):
         widget.delete("1.0", tk.END)
         widget.insert("1.0", value)
 
-    def set_status(self, message: str) -> None:
+    def set_status(self, message: str, kind: str = "normal") -> None:
         self.status_var.set(message)
+        self.status_label.configure(style="StatusSuccess.TLabel" if kind == "success" else "Status.TLabel")
         if self.status_after_id is not None:
             self.after_cancel(self.status_after_id)
-        self.status_after_id = self.after(3000, lambda: self.status_var.set(DEFAULT_STATUS))
+        if kind == "success":
+            self.status_after_id = self.after(3000, self.normalize_status_color)
+        else:
+            self.status_after_id = self.after(3000, self.reset_status)
+
+    def normalize_status_color(self) -> None:
+        self.status_label.configure(style="Status.TLabel")
+        self.status_after_id = None
+
+    def reset_status(self) -> None:
+        self.status_var.set(DEFAULT_STATUS)
+        self.status_label.configure(style="Status.TLabel")
+        self.status_after_id = None
+
+    def maximize_window(self) -> None:
+        try:
+            self.state("zoomed")
+        except tk.TclError:
+            width = self.winfo_screenwidth()
+            height = self.winfo_screenheight()
+            self.geometry(f"{width}x{height}+0+0")
 
     def on_close(self) -> None:
         if self.dirty and not self.confirm_unsaved_changes():
