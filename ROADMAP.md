@@ -29,6 +29,7 @@ Status: in progress.
 - Add snippet validation warnings.
 - Add import/export and restore defaults.
 - Add manual test checklist.
+- Add automated regression tests for defaults, generators, search, templates, validation, and storage.
 
 ## v0.2.0 - Editable library
 
@@ -45,7 +46,10 @@ Status: partially complete.
 
 Status: partially complete.
 
-- Support 1xN vertical and horizontal headers.
+- Support generated 1xN vertical male headers.
+- Support generated 1xN vertical female sockets.
+- Support generated JST XH vertical connectors.
+- Keep horizontal headers planned until a trusted KiCad 9 snippet/generator is added.
 - Ask only for pin count.
 - Derive two-digit pin tokens such as `{{pins_2}}`.
 - Verify multiple pin counts in KiCad 9.

@@ -12,6 +12,13 @@ Verified bundled snippets so far:
 
 - Resistor 0805 Hand Solder
 - Capacitor 0805 Hand Solder
+- SMD Crystal 3225 4-Pin Hand Solder
+
+Generated bundled parts so far:
+
+- Pin Header 1xN 2.54mm Vertical Male
+- Pin Socket 1xN 2.54mm Vertical Female
+- JST XH 1xN 2.50mm Vertical
 
 ## Features
 
@@ -34,7 +41,13 @@ $env:PYTHONPATH = "src"
 python -m kicad_partstash
 ```
 
-If `python` is not available in your terminal, install Python 3.10+ or use the Python executable provided by your development environment.
+Run tests:
+
+```powershell
+python -m unittest
+```
+
+If `python` is not available in your terminal, install Python 3.10+, use the Windows `py` launcher, or use the Python executable provided by your development environment.
 
 ## KiCad workflow
 

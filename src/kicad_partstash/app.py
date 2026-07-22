@@ -8,6 +8,7 @@ from tkinter import filedialog, messagebox, ttk
 
 from .models import Part
 from .search import rank_parts
+from .snippet_generators import generate_snippet, generator_template_fields
 from .snippet_validation import validate_snippet
 from .storage import PartStore
 from .templates import render_template, required_template_fields, unsupported_template_fields
@@ -121,8 +122,14 @@ class App(tk.Tk):
         sidebar.columnconfigure(0, weight=1)
 
         ttk.Label(sidebar, text="Search").grid(row=0, column=0, sticky="w")
-        self.search_entry = ttk.Entry(sidebar, textvariable=self.search_var, width=34)
-        self.search_entry.grid(row=1, column=0, sticky="ew", pady=(4, 10))
+        search_frame = ttk.Frame(sidebar)
+        search_frame.grid(row=1, column=0, columnspan=2, sticky="ew", pady=(4, 10))
+        search_frame.columnconfigure(0, weight=1)
+        self.search_entry = ttk.Entry(search_frame, textvariable=self.search_var, width=34)
+        self.search_entry.grid(row=0, column=0, sticky="ew")
+        ttk.Button(search_frame, text="Clear", width=7, command=self.clear_search_and_focus).grid(
+            row=0, column=1, padx=(6, 0)
+        )
 
         self.listbox = tk.Listbox(sidebar, width=38, exportselection=False, activestyle="dotbox")
         self.listbox.grid(row=2, column=0, sticky="nsew")
@@ -217,15 +224,18 @@ class App(tk.Tk):
         if self.filtered_ids:
             self.select_part(self.filtered_ids[0])
 
-    def refresh_list(self) -> None:
+    def refresh_list(self, preserve_order: bool = False) -> None:
         query = self.search_var.get().strip()
         current = self.selected_id
-        ranked_parts = rank_parts(self.parts, query, self.recent_ids)
+        if preserve_order and self.filtered_ids:
+            parts_by_id = {part.id: part for part in self.parts}
+            ordered_parts = [parts_by_id[part_id] for part_id in self.filtered_ids if part_id in parts_by_id]
+        else:
+            ordered_parts = [ranked.part for ranked in rank_parts(self.parts, query, self.recent_ids)]
 
         self.listbox.delete(0, tk.END)
         self.filtered_ids = []
-        for ranked in ranked_parts:
-            part = ranked.part
+        for part in ordered_parts:
             prefix = "Recent" if part.id in self.recent_ids else part.category
             marker = "*" if part.source == "user" else ""
             label = f"{prefix} / {part.name}{marker}"
@@ -284,7 +294,7 @@ class App(tk.Tk):
         self.field_vars["source"].set(part.source)
         self.set_text(self.description_text, part.description)
         self.set_text(self.snippet_text, part.snippet)
-        self.update_validation_summary(part.snippet)
+        self.update_validation_summary(part)
         self.description_text.edit_modified(False)
         self.snippet_text.edit_modified(False)
         self.dirty = False
@@ -416,18 +426,21 @@ class App(tk.Tk):
         updated.snippet = self.snippet_text.get("1.0", "end-1c")
         updated.source = "user"
 
-        validation = validate_snippet(updated.snippet)
-        updated.status = validation.suggested_status(requested_status)
-        if validation.lib_id and not updated.symbol:
-            updated.symbol = validation.lib_id
-        if validation.footprint and not updated.footprint:
-            updated.footprint = validation.footprint
+        if updated.generator and not updated.snippet.strip():
+            updated.status = requested_status if requested_status != "needs_snippet" else "generator"
+        else:
+            validation = validate_snippet(updated.snippet)
+            updated.status = validation.suggested_status(requested_status)
+            if validation.lib_id and not updated.symbol:
+                updated.symbol = validation.lib_id
+            if validation.footprint and not updated.footprint:
+                updated.footprint = validation.footprint
 
         self.store.save_user_part(updated)
         self.parts = [updated if item.id == updated.id else item for item in self.parts]
         self.select_part(updated.id)
         self.refresh_list()
-        self.update_validation_summary(updated.snippet)
+        self.update_validation_summary(updated)
         self.set_status(f"Saved: {updated.name}")
 
     def copy_selected(self) -> None:
@@ -440,21 +453,13 @@ class App(tk.Tk):
             self.set_status(f"No snippet captured yet: {part.name}")
             return
 
-        snippet = part.snippet
-        fields = required_template_fields(snippet, part.template_fields)
-        unsupported_fields = unsupported_template_fields(fields)
-        if unsupported_fields:
-            self.set_status(f"Unsupported template fields: {', '.join(unsupported_fields)}")
+        try:
+            snippet = self.build_snippet_for_copy(part)
+        except ValueError as exc:
+            self.set_status(str(exc))
             return
-        if "pins" in fields:
-            default_pins = part.default_template_values.get("pins", "4")
-            dialog = PinDialog(self, default_pins=default_pins)
-            self.wait_window(dialog)
-            if dialog.result is None:
-                return
-            snippet = render_template(snippet, dialog.result)
-        else:
-            snippet = render_template(snippet, {})
+        if snippet is None:
+            return
 
         self.clipboard_clear()
         self.clipboard_append(snippet)
@@ -466,6 +471,34 @@ class App(tk.Tk):
             self.set_status(f"Copied with warning: {validation.summary()}")
         else:
             self.set_status(f"Copied: {part.name}")
+
+    def build_snippet_for_copy(self, part: Part) -> str | None:
+        if part.generator:
+            fields = generator_template_fields(part.generator)
+            values = self.ask_for_template_values(fields, part.default_template_values)
+            if values is None:
+                return None
+            return generate_snippet(part.generator, values)
+
+        snippet = part.snippet
+        fields = required_template_fields(snippet, part.template_fields)
+        unsupported_fields = unsupported_template_fields(fields)
+        if unsupported_fields:
+            raise ValueError(f"Unsupported template fields: {', '.join(unsupported_fields)}")
+        values = self.ask_for_template_values(fields, part.default_template_values)
+        if values is None:
+            return None
+        return render_template(snippet, values)
+
+    def ask_for_template_values(
+        self, fields: list[str], default_template_values: dict[str, str]
+    ) -> dict[str, str] | None:
+        if "pins" not in fields:
+            return {}
+        default_pins = default_template_values.get("pins", "4")
+        dialog = PinDialog(self, default_pins=default_pins)
+        self.wait_window(dialog)
+        return dialog.result
 
     def capture_clipboard_for_selected(self) -> None:
         part = self.find_part(self.selected_id)
@@ -506,7 +539,7 @@ class App(tk.Tk):
         self.recent_ids = [part_id] + [item for item in self.recent_ids if item != part_id]
         self.recent_ids = self.recent_ids[:10]
         self.store.save_recent_ids(self.recent_ids)
-        self.refresh_list()
+        self.refresh_list(preserve_order=True)
 
     def confirm_unsaved_changes(self) -> bool:
         result = messagebox.askyesnocancel(
@@ -534,7 +567,17 @@ class App(tk.Tk):
                 self.update_validation_summary(self.snippet_text.get("1.0", "end-1c"))
             widget.edit_modified(False)
 
-    def update_validation_summary(self, snippet: str) -> None:
+    def update_validation_summary(self, part_or_snippet: Part | str) -> None:
+        if isinstance(part_or_snippet, Part):
+            part = part_or_snippet
+            snippet = part.snippet
+            if part.generator and not snippet.strip():
+                default_pins = part.default_template_values.get("pins", "4")
+                self.validation_var.set(f"Generator: asks for pin count. Default: {default_pins}.")
+                return
+        else:
+            snippet = part_or_snippet
+
         validation = validate_snippet(snippet)
         if not snippet.strip():
             self.validation_var.set("Snippet: empty.")
@@ -580,6 +623,10 @@ class App(tk.Tk):
 
     def clear_search(self) -> None:
         self.search_var.set("")
+
+    def clear_search_and_focus(self) -> None:
+        self.clear_search()
+        self.focus_search()
 
     def set_text(self, widget: tk.Text, value: str) -> None:
         widget.delete("1.0", tk.END)

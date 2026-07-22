@@ -82,8 +82,6 @@ def score_token(token: str, text: str, weight: int) -> int:
         return weight - 5
     if any(word.startswith(token) for word in words):
         return weight - 15
-    if len(token) >= 4 and token in normalized:
-        return weight - 30
     return 0
 
 

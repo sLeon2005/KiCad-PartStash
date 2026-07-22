@@ -60,17 +60,19 @@
   },
   {
     "id": "pin-header-1xn-vertical-254",
-    "name": "Pin Header 1xN 2.54mm Vertical",
+    "name": "Pin Header 1xN 2.54mm Vertical Male",
     "category": "Connectors",
     "tags": [
       "header",
       "pins",
       "2.54mm",
-      "vertical"
+      "vertical",
+      "male",
+      "1xn"
     ],
-    "symbol": "Connector_Generic:Conn_01x{{pins_2}}",
+    "symbol": "Connector:Conn_01x{{pins_2}}_Pin",
     "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x{{pins_2}}_P2.54mm_Vertical",
-    "description": "Variable pin header. Only the pin count should be requested when copying.",
+    "description": "Generated KiCad 9 single-row vertical male pin header. Copying asks only for pin count; default is 4.",
     "snippet": "",
     "template_fields": [
       "pins"
@@ -79,7 +81,66 @@
       "pins": "4"
     },
     "verified_with": "KiCad 9",
-    "status": "needs_snippet"
+    "status": "generator",
+    "source": "default",
+    "generator": "connector_1xn_pin_vertical"
+  },
+  {
+    "id": "pin-socket-1xn-vertical-female-254",
+    "name": "Pin Socket 1xN 2.54mm Vertical Female",
+    "category": "Connectors",
+    "tags": [
+      "socket",
+      "header",
+      "pins",
+      "2.54mm",
+      "vertical",
+      "female",
+      "1xn"
+    ],
+    "symbol": "Connector:Conn_01x{{pins_2}}_Socket",
+    "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x{{pins_2}}_P2.54mm_Vertical",
+    "description": "Generated KiCad 9 single-row vertical female pin socket. Copying asks only for pin count; default is 4.",
+    "snippet": "",
+    "template_fields": [
+      "pins"
+    ],
+    "default_template_values": {
+      "pins": "4"
+    },
+    "verified_with": "KiCad 9",
+    "status": "generator",
+    "source": "default",
+    "generator": "connector_1xn_socket_vertical"
+  },
+  {
+    "id": "jst-xh-1xn-vertical-250",
+    "name": "JST XH 1xN 2.50mm Vertical",
+    "category": "Connectors",
+    "tags": [
+      "jst",
+      "xh",
+      "connector",
+      "pins",
+      "2.50mm",
+      "vertical",
+      "wire-to-board",
+      "1xn"
+    ],
+    "symbol": "Connector:Conn_01x{{pins_2}}_Pin",
+    "footprint": "Connector_JST:JST_XH_B{{pins}}B-XH-A_1x{{pins_2}}_P2.50mm_Vertical",
+    "description": "Generated KiCad 9 JST XH vertical wire-to-board connector. Copying asks only for pin count; default is 2.",
+    "snippet": "",
+    "template_fields": [
+      "pins"
+    ],
+    "default_template_values": {
+      "pins": "2"
+    },
+    "verified_with": "KiCad 9",
+    "status": "generator",
+    "source": "default",
+    "generator": "connector_jst_xh_vertical"
   },
   {
     "id": "pin-header-1xn-horizontal-254",
@@ -180,23 +241,28 @@
     "status": "needs_snippet"
   },
   {
-    "id": "crystal-smd-16mhz",
-    "name": "SMD Crystal 16 MHz",
+    "id": "crystal-smd-3225-4pin-handsolder",
+    "name": "SMD Crystal 3225 4-Pin Hand Solder",
     "category": "Passives",
     "tags": [
       "crystal",
-      "16mhz",
+      "quartz",
+      "resonator",
       "smd",
-      "clock"
+      "3225",
+      "4pin",
+      "gnd24",
+      "handsolder"
     ],
-    "symbol": "Device:Crystal",
-    "footprint": "",
-    "description": "Target part placeholder until the exact SMD crystal package is captured.",
-    "snippet": "",
+    "symbol": "Device:Crystal_GND24",
+    "footprint": "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm_HandSoldering",
+    "description": "Verified KiCad 9 four-pin SMD crystal using the 3225 hand-solder footprint. Frequency/value is intentionally left generic.",
+    "snippet": "(lib_symbols\n\t(symbol \"Device:Crystal_GND24\"\n\t\t(pin_names\n\t\t\t(offset 1.016)\n\t\t\t(hide yes)\n\t\t)\n\t\t(exclude_from_sim no)\n\t\t(in_bom yes)\n\t\t(on_board yes)\n\t\t(property \"Reference\" \"Y\"\n\t\t\t(at 3.175 5.08 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Value\" \"Crystal_GND24\"\n\t\t\t(at 3.175 3.175 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Footprint\" \"\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Datasheet\" \"~\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Description\" \"Four pin crystal, GND on pins 2 and 4\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_keywords\" \"quartz ceramic resonator oscillator\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_fp_filters\" \"Crystal*\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(symbol \"Crystal_GND24_0_1\"\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -2.54 2.286) (xy -2.54 3.556) (xy 2.54 3.556) (xy 2.54 2.286)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -2.54 0) (xy -2.032 0)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -2.54 -2.286) (xy -2.54 -3.556) (xy 2.54 -3.556) (xy 2.54 -2.286)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -2.032 -1.27) (xy -2.032 1.27)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0.508) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(rectangle\n\t\t\t\t(start -1.143 2.54)\n\t\t\t\t(end 1.143 -2.54)\n\t\t\t\t(stroke (width 0.3048) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 0 3.556) (xy 0 3.81)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 0 -3.81) (xy 0 -3.556)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 2.032 0) (xy 2.54 0)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 2.032 -1.27) (xy 2.032 1.27)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0.508) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t)\n\t\t(symbol \"Crystal_GND24_1_1\"\n\t\t\t(pin passive line\n\t\t\t\t(at -3.81 0 0)\n\t\t\t\t(length 1.27)\n\t\t\t\t(name \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 0 5.08 270)\n\t\t\t\t(length 1.27)\n\t\t\t\t(name \"2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 0 -5.08 90)\n\t\t\t\t(length 1.27)\n\t\t\t\t(name \"4\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"4\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 3.81 0 180)\n\t\t\t\t(length 1.27)\n\t\t\t\t(name \"3\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"3\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t)\n\t\t(embedded_fonts no)\n\t)\n)\n(symbol\n\t(lib_id \"Device:Crystal_GND24\")\n\t(at 35.56 125.73 0)\n\t(unit 1)\n\t(exclude_from_sim no)\n\t(in_bom yes)\n\t(on_board yes)\n\t(dnp no)\n\t(fields_autoplaced yes)\n\t(uuid \"e1c0d116-a54b-42fe-96f2-b73ef9315752\")\n\t(property \"Reference\" \"Y?\"\n\t\t(at 43.18 119.3098 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Value\" \"Crystal_GND24\"\n\t\t(at 43.18 121.8498 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Footprint\" \"Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm_HandSoldering\"\n\t\t(at 35.56 125.73 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Datasheet\" \"~\"\n\t\t(at 35.56 125.73 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Description\" \"Four pin crystal, GND on pins 2 and 4\"\n\t\t(at 35.56 125.73 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(pin \"2\"\n\t\t(uuid \"ba4a601f-b8be-48c8-8d29-11b3942a2a60\")\n\t)\n\t(pin \"4\"\n\t\t(uuid \"1670e4c5-ffb6-4b4a-ae5a-6510c594ba08\")\n\t)\n\t(pin \"1\"\n\t\t(uuid \"eb6d9032-d84e-471a-b211-f6c4a08bd339\")\n\t)\n\t(pin \"3\"\n\t\t(uuid \"b7469282-08de-4fe0-8d67-a7263470af81\")\n\t)\n\t(instances\n\t\t(project \"\"\n\t\t\t(path \"\"\n\t\t\t\t(reference \"Y?\")\n\t\t\t\t(unit 1)\n\t\t\t)\n\t\t)\n\t)\n)\n",
     "template_fields": [],
     "default_template_values": {},
     "verified_with": "KiCad 9",
-    "status": "needs_snippet"
+    "status": "verified",
+    "source": "default"
   },
   {
     "id": "push-button",
@@ -229,7 +295,7 @@
     ],
     "symbol": "",
     "footprint": "",
-    "description": "Future ready block: ATmega328P with 16 MHz crystal, reset, ISP header, and useful labels.",
+    "description": "Future ready block: ATmega328P with external crystal, reset, ISP header, and useful labels.",
     "snippet": "",
     "template_fields": [],
     "default_template_values": {},

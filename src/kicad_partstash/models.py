@@ -21,6 +21,7 @@ class Part:
     source: str = "default"
     verified_with: str = ""
     status: str = "needs_snippet"
+    generator: str = ""
 
     @classmethod
     def from_dict(cls, data: dict[str, Any], source: str = "default") -> "Part":
@@ -50,6 +51,7 @@ class Part:
             source=str(data.get("source") or source),
             verified_with=str(data.get("verified_with") or ""),
             status=str(data.get("status") or "needs_snippet"),
+            generator=str(data.get("generator") or ""),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -67,6 +69,7 @@ class Part:
             "source": self.source,
             "verified_with": self.verified_with,
             "status": self.status,
+            "generator": self.generator,
         }
 
     def searchable_text(self) -> str:
@@ -79,11 +82,12 @@ class Part:
                 self.footprint,
                 self.description,
                 self.status,
+                self.generator,
             ]
         ).lower()
 
     def has_snippet(self) -> bool:
-        return bool(self.snippet.strip())
+        return bool(self.snippet.strip()) or bool(self.generator.strip())
 
     def has_footprint_hint(self) -> bool:
         if self.footprint.strip():

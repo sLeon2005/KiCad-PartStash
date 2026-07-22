@@ -1,0 +1,239 @@
+﻿(lib_symbols
+	(symbol "Connector:Conn_01x04_Pin"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "J"
+			(at 0 5.08 0)
+			(effects
+				(font (size 1.27 1.27))
+			)
+		)
+		(property "Value" "Conn_01x04_Pin"
+			(at 0 -7.62 0)
+			(effects
+				(font (size 1.27 1.27))
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font (size 1.27 1.27))
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font (size 1.27 1.27))
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x04, script generated"
+			(at 0 0 0)
+			(effects
+				(font (size 1.27 1.27))
+				(hide yes)
+			)
+		)
+		(property "ki_locked" ""
+			(at 0 0 0)
+			(effects
+				(font (size 1.27 1.27))
+			)
+		)
+		(property "ki_keywords" "connector"
+			(at 0 0 0)
+			(effects
+				(font (size 1.27 1.27))
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Connector*:1x??**"
+			(at 0 0 0)
+			(effects
+				(font (size 1.27 1.27))
+				(hide yes)
+			)
+		)
+		(symbol "Conn_01x04_Pin_1_1"
+			(rectangle
+				(start 0.8636 2.667)
+				(end 0 2.413)
+				(stroke (width 0.1524) (type default))
+				(fill (type outline))
+			)
+			(rectangle
+				(start 0.8636 0.127)
+				(end 0 -0.127)
+				(stroke (width 0.1524) (type default))
+				(fill (type outline))
+			)
+			(rectangle
+				(start 0.8636 -2.413)
+				(end 0 -2.667)
+				(stroke (width 0.1524) (type default))
+				(fill (type outline))
+			)
+			(rectangle
+				(start 0.8636 -4.953)
+				(end 0 -5.207)
+				(stroke (width 0.1524) (type default))
+				(fill (type outline))
+			)
+			(polyline
+				(pts
+					(xy 1.27 2.54) (xy 0.8636 2.54)
+				)
+				(stroke (width 0.1524) (type default))
+				(fill (type none))
+			)
+			(polyline
+				(pts
+					(xy 1.27 0) (xy 0.8636 0)
+				)
+				(stroke (width 0.1524) (type default))
+				(fill (type none))
+			)
+			(polyline
+				(pts
+					(xy 1.27 -2.54) (xy 0.8636 -2.54)
+				)
+				(stroke (width 0.1524) (type default))
+				(fill (type none))
+			)
+			(polyline
+				(pts
+					(xy 1.27 -5.08) (xy 0.8636 -5.08)
+				)
+				(stroke (width 0.1524) (type default))
+				(fill (type none))
+			)
+			(pin passive line
+				(at 5.08 2.54 180)
+				(length 3.81)
+				(name "Pin_1"
+					(effects
+						(font (size 1.27 1.27))
+					)
+				)
+				(number "1"
+					(effects
+						(font (size 1.27 1.27))
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 0 180)
+				(length 3.81)
+				(name "Pin_2"
+					(effects
+						(font (size 1.27 1.27))
+					)
+				)
+				(number "2"
+					(effects
+						(font (size 1.27 1.27))
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 -2.54 180)
+				(length 3.81)
+				(name "Pin_3"
+					(effects
+						(font (size 1.27 1.27))
+					)
+				)
+				(number "3"
+					(effects
+						(font (size 1.27 1.27))
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 -5.08 180)
+				(length 3.81)
+				(name "Pin_4"
+					(effects
+						(font (size 1.27 1.27))
+					)
+				)
+				(number "4"
+					(effects
+						(font (size 1.27 1.27))
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+)
+(symbol
+	(lib_id "Connector:Conn_01x04_Pin")
+	(at 137.16 143.51 0)
+	(unit 1)
+	(exclude_from_sim no)
+	(in_bom yes)
+	(on_board yes)
+	(dnp no)
+	(fields_autoplaced yes)
+	(uuid "09d755b2-7c7e-4058-af38-346a40eca7b3")
+	(property "Reference" "J1"
+		(at 137.795 135.89 0)
+		(effects
+			(font (size 1.27 1.27))
+		)
+	)
+	(property "Value" "Conn_01x04_Pin"
+		(at 137.795 138.43 0)
+		(effects
+			(font (size 1.27 1.27))
+		)
+	)
+	(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+		(at 137.16 143.51 0)
+		(effects
+			(font (size 1.27 1.27))
+			(hide yes)
+		)
+	)
+	(property "Datasheet" "~"
+		(at 137.16 143.51 0)
+		(effects
+			(font (size 1.27 1.27))
+			(hide yes)
+		)
+	)
+	(property "Description" "Generic connector, single row, 01x04, script generated"
+		(at 137.16 143.51 0)
+		(effects
+			(font (size 1.27 1.27))
+			(hide yes)
+		)
+	)
+	(pin "1"
+		(uuid "53246144-ad36-479f-9aac-806c79169107")
+	)
+	(pin "2"
+		(uuid "ed269573-5a57-4e4a-bbe8-5a239c2e8496")
+	)
+	(pin "3"
+		(uuid "53410e9d-3b86-4956-be48-d10329292c0a")
+	)
+	(pin "4"
+		(uuid "7271117c-e9b2-4a2e-87d1-4521568bd888")
+	)
+	(instances
+		(project ""
+			(path ""
+				(reference "J1")
+				(unit 1)
+			)
+		)
+	)
+)

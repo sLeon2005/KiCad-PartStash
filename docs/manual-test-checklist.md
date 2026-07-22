@@ -16,6 +16,7 @@ Use this checklist before tagging a usable MVP release or promoting new default 
 - Search `cap hand` and confirm only the capacitor is the best match.
 - Double-click a part and confirm it copies.
 - Confirm copied resistor/capacitor snippets paste into KiCad 9.
+- Search `crystal 3225` and confirm the crystal uses `Device:Crystal_GND24` and the 3225 hand-solder footprint.
 
 ## Editing
 
