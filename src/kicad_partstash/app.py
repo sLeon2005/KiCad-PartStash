@@ -3,16 +3,20 @@ from __future__ import annotations
 import copy
 import tkinter as tk
 import uuid
-from tkinter import messagebox, ttk
+from pathlib import Path
+from tkinter import filedialog, messagebox, ttk
 
 from .models import Part
 from .search import rank_parts
+from .snippet_validation import validate_snippet
 from .storage import PartStore
-from .templates import find_template_tokens, render_template
+from .templates import render_template, required_template_fields, unsupported_template_fields
 
 
 APP_TITLE = "Kicad-PartStash"
 DEFAULT_STATUS = "Ready."
+PIN_MIN = 1
+PIN_MAX = 64
 
 
 class PinDialog(tk.Toplevel):
@@ -26,7 +30,7 @@ class PinDialog(tk.Toplevel):
         frame = ttk.Frame(self, padding=12)
         frame.grid(row=0, column=0, sticky="nsew")
         ttk.Label(frame, text="Number of pins").grid(row=0, column=0, sticky="w", padx=(0, 10))
-        spinbox = ttk.Spinbox(frame, from_=1, to=64, textvariable=self.pins_var, width=6)
+        spinbox = ttk.Spinbox(frame, from_=PIN_MIN, to=PIN_MAX, textvariable=self.pins_var, width=6)
         spinbox.grid(row=0, column=1, sticky="w")
 
         buttons = ttk.Frame(frame)
@@ -43,10 +47,10 @@ class PinDialog(tk.Toplevel):
 
     def submit(self) -> None:
         value = self.pins_var.get().strip()
-        if not value.isdigit() or int(value) < 1:
-            messagebox.showwarning("Invalid value", "Pins must be a positive number.", parent=self)
+        if not value.isdigit() or not PIN_MIN <= int(value) <= PIN_MAX:
+            messagebox.showwarning("Invalid value", f"Pins must be between {PIN_MIN} and {PIN_MAX}.", parent=self)
             return
-        self.result = {"pins": value}
+        self.result = {"pins": str(int(value))}
         self.destroy()
 
 
@@ -62,9 +66,11 @@ class App(tk.Tk):
         self.status_after_id: str | None = None
         self.dirty = False
         self.loading_fields = False
+        self.edit_entries: list[ttk.Entry] = []
 
         self.search_var = tk.StringVar()
         self.status_var = tk.StringVar(value=DEFAULT_STATUS)
+        self.validation_var = tk.StringVar(value="Snippet: no snippet selected.")
         self.field_vars = {
             "name": tk.StringVar(),
             "category": tk.StringVar(),
@@ -77,9 +83,33 @@ class App(tk.Tk):
 
         self.title(APP_TITLE)
         self.minsize(1040, 640)
+        self._build_menu()
         self._build_ui()
         self._bind_events()
         self.load_data()
+
+    def _build_menu(self) -> None:
+        menu = tk.Menu(self)
+        file_menu = tk.Menu(menu, tearoff=False)
+        file_menu.add_command(label="Import User Library...", command=self.import_library)
+        file_menu.add_command(label="Export User Library...", command=self.export_library)
+        file_menu.add_separator()
+        file_menu.add_command(label="Restore Bundled Defaults", command=self.restore_defaults)
+        file_menu.add_separator()
+        file_menu.add_command(label="Exit", command=self.on_close)
+        menu.add_cascade(label="File", menu=file_menu)
+
+        part_menu = tk.Menu(menu, tearoff=False)
+        part_menu.add_command(label="New Part", command=self.new_part)
+        part_menu.add_command(label="Duplicate Part", command=self.duplicate_selected)
+        part_menu.add_command(label="Delete Part", command=self.delete_selected)
+        part_menu.add_separator()
+        part_menu.add_command(label="Capture Clipboard", command=self.capture_clipboard_for_selected)
+        part_menu.add_command(label="Save", command=self.save_current, accelerator="Ctrl+S")
+        part_menu.add_command(label="Copy", command=self.copy_selected, accelerator="Enter")
+        menu.add_cascade(label="Part", menu=part_menu)
+
+        self.config(menu=menu)
 
     def _build_ui(self) -> None:
         self.columnconfigure(1, weight=1)
@@ -125,7 +155,10 @@ class App(tk.Tk):
         for row, (label, key) in enumerate(rows):
             ttk.Label(main, text=label).grid(row=row, column=0, sticky="w", pady=3, padx=(0, 10))
             entry = ttk.Entry(main, textvariable=self.field_vars[key])
+            if key == "source":
+                entry.configure(state="readonly")
             entry.grid(row=row, column=1, sticky="ew", pady=3)
+            self.edit_entries.append(entry)
 
         ttk.Label(main, text="Description").grid(row=7, column=0, sticky="nw", pady=(10, 3), padx=(0, 10))
         self.description_text = tk.Text(main, height=4, wrap="word", undo=True)
@@ -138,8 +171,10 @@ class App(tk.Tk):
         snippet_scroll.grid(row=9, column=2, sticky="ns")
         self.snippet_text.configure(yscrollcommand=snippet_scroll.set)
 
+        ttk.Label(main, textvariable=self.validation_var, wraplength=720).grid(row=10, column=1, sticky="w", pady=(8, 0))
+
         actions = ttk.Frame(main)
-        actions.grid(row=10, column=1, sticky="e", pady=(12, 0))
+        actions.grid(row=11, column=1, sticky="e", pady=(12, 0))
         ttk.Button(actions, text="Capture Clipboard", command=self.capture_clipboard_for_selected).grid(
             row=0, column=0, padx=(0, 8)
         )
@@ -155,12 +190,17 @@ class App(tk.Tk):
             var.trace_add("write", lambda *_args: self.mark_dirty())
         self.description_text.bind("<<Modified>>", self.on_text_modified)
         self.snippet_text.bind("<<Modified>>", self.on_text_modified)
+        self.search_entry.bind("<Down>", self.focus_listbox)
+        self.search_entry.bind("<Up>", self.focus_listbox)
+        self.search_entry.bind("<Return>", self.on_return_key)
         self.listbox.bind("<<ListboxSelect>>", self.on_select)
         self.listbox.bind("<Double-Button-1>", lambda _event: self.copy_selected())
-        self.bind("<Return>", lambda _event: self.copy_selected())
+        self.listbox.bind("<Return>", self.on_return_key)
+        self.listbox.bind("<Escape>", self.on_escape_key)
+        self.bind("<Return>", self.on_return_key)
         self.bind("<Control-f>", lambda _event: self.focus_search())
-        self.bind("<Control-s>", lambda _event: self.save_current())
-        self.bind("<Escape>", lambda _event: self.clear_search())
+        self.bind("<Control-s>", self.on_save_key)
+        self.bind("<Escape>", self.on_escape_key)
         self.protocol("WM_DELETE_WINDOW", self.on_close)
 
     def load_data(self) -> None:
@@ -210,6 +250,7 @@ class App(tk.Tk):
             var.set("")
         self.set_text(self.description_text, "")
         self.set_text(self.snippet_text, "")
+        self.validation_var.set("Snippet: no snippet selected.")
         self.description_text.edit_modified(False)
         self.snippet_text.edit_modified(False)
         self.loading_fields = False
@@ -243,6 +284,7 @@ class App(tk.Tk):
         self.field_vars["source"].set(part.source)
         self.set_text(self.description_text, part.description)
         self.set_text(self.snippet_text, part.snippet)
+        self.update_validation_summary(part.snippet)
         self.description_text.edit_modified(False)
         self.snippet_text.edit_modified(False)
         self.dirty = False
@@ -305,6 +347,60 @@ class App(tk.Tk):
         self.reload_after_mutation(select_id=part.id if default_backing_exists else None)
         self.set_status(f"{action} complete.")
 
+    def import_library(self) -> None:
+        if self.dirty and not self.confirm_unsaved_changes():
+            return
+        path = filedialog.askopenfilename(
+            parent=self,
+            title="Import user library",
+            filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
+        )
+        if not path:
+            return
+        try:
+            count = self.store.import_user_parts(Path(path))
+        except Exception as exc:
+            messagebox.showerror("Import failed", str(exc), parent=self)
+            return
+        self.reload_after_mutation()
+        self.set_status(f"Imported {count} user part(s).")
+
+    def export_library(self) -> None:
+        if self.dirty and not self.confirm_unsaved_changes():
+            return
+        path = filedialog.asksaveasfilename(
+            parent=self,
+            title="Export user library",
+            defaultextension=".json",
+            initialfile="kicad_partstash_user_parts.json",
+            filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
+        )
+        if not path:
+            return
+        try:
+            count = self.store.export_user_parts(Path(path))
+        except Exception as exc:
+            messagebox.showerror("Export failed", str(exc), parent=self)
+            return
+        self.set_status(f"Exported {count} user part(s).")
+
+    def restore_defaults(self) -> None:
+        if self.dirty and not self.confirm_unsaved_changes():
+            return
+        if not messagebox.askyesno(
+            "Restore defaults",
+            "Remove user edits to bundled defaults? Custom user parts will stay.",
+            parent=self,
+        ):
+            return
+        try:
+            count = self.store.restore_default_overrides()
+        except Exception as exc:
+            messagebox.showerror("Restore failed", str(exc), parent=self)
+            return
+        self.reload_after_mutation()
+        self.set_status(f"Restored {count} default override(s).")
+
     def save_current(self) -> None:
         part = self.find_part(self.selected_id)
         if part is None:
@@ -315,17 +411,23 @@ class App(tk.Tk):
         updated.symbol = self.field_vars["symbol"].get().strip()
         updated.footprint = self.field_vars["footprint"].get().strip()
         updated.tags = [tag.strip() for tag in self.field_vars["tags"].get().split(",") if tag.strip()]
-        updated.status = self.field_vars["status"].get().strip() or "draft"
+        requested_status = self.field_vars["status"].get().strip() or "draft"
         updated.description = self.description_text.get("1.0", "end-1c").strip()
         updated.snippet = self.snippet_text.get("1.0", "end-1c")
         updated.source = "user"
-        if updated.snippet.strip() and not self.snippet_has_footprint(updated.snippet):
-            updated.status = "captured_missing_footprint_warning"
+
+        validation = validate_snippet(updated.snippet)
+        updated.status = validation.suggested_status(requested_status)
+        if validation.lib_id and not updated.symbol:
+            updated.symbol = validation.lib_id
+        if validation.footprint and not updated.footprint:
+            updated.footprint = validation.footprint
 
         self.store.save_user_part(updated)
         self.parts = [updated if item.id == updated.id else item for item in self.parts]
         self.select_part(updated.id)
         self.refresh_list()
+        self.update_validation_summary(updated.snippet)
         self.set_status(f"Saved: {updated.name}")
 
     def copy_selected(self) -> None:
@@ -339,22 +441,29 @@ class App(tk.Tk):
             return
 
         snippet = part.snippet
-        tokens = find_template_tokens(snippet)
-        if "pins" in tokens:
+        fields = required_template_fields(snippet, part.template_fields)
+        unsupported_fields = unsupported_template_fields(fields)
+        if unsupported_fields:
+            self.set_status(f"Unsupported template fields: {', '.join(unsupported_fields)}")
+            return
+        if "pins" in fields:
             default_pins = part.default_template_values.get("pins", "4")
             dialog = PinDialog(self, default_pins=default_pins)
             self.wait_window(dialog)
             if dialog.result is None:
                 return
             snippet = render_template(snippet, dialog.result)
+        else:
+            snippet = render_template(snippet, {})
 
         self.clipboard_clear()
         self.clipboard_append(snippet)
         self.update()
         self.add_recent(part.id)
 
-        if not part.has_footprint_hint():
-            self.set_status(f"Copied with footprint warning: {part.name}")
+        validation = validate_snippet(snippet)
+        if validation.warnings:
+            self.set_status(f"Copied with warning: {validation.summary()}")
         else:
             self.set_status(f"Copied: {part.name}")
 
@@ -371,10 +480,17 @@ class App(tk.Tk):
             self.set_status("Clipboard has no text.")
             return
 
+        validation = validate_snippet(snippet)
         self.set_text(self.snippet_text, snippet)
-        self.field_vars["status"].set("captured" if self.snippet_has_footprint(snippet) else "captured_missing_footprint_warning")
+        self.update_validation_summary(snippet)
+        self.field_vars["status"].set(validation.suggested_status(self.field_vars["status"].get()))
+        if validation.lib_id and not self.field_vars["symbol"].get().strip():
+            self.field_vars["symbol"].set(validation.lib_id)
+        if validation.footprint and not self.field_vars["footprint"].get().strip():
+            self.field_vars["footprint"].set(validation.footprint)
         self.mark_dirty()
         self.save_current()
+        self.set_status(f"Captured: {validation.summary()}")
 
     def reload_after_mutation(self, select_id: str | None = None) -> None:
         self.parts = self.store.load_parts()
@@ -414,7 +530,49 @@ class App(tk.Tk):
         widget = event.widget
         if widget.edit_modified():
             self.mark_dirty()
+            if widget is self.snippet_text:
+                self.update_validation_summary(self.snippet_text.get("1.0", "end-1c"))
             widget.edit_modified(False)
+
+    def update_validation_summary(self, snippet: str) -> None:
+        validation = validate_snippet(snippet)
+        if not snippet.strip():
+            self.validation_var.set("Snippet: empty.")
+        elif validation.warnings:
+            self.validation_var.set(f"Snippet: needs review - {validation.summary()}")
+        else:
+            self.validation_var.set(f"Snippet: OK - {validation.lib_id} / {validation.footprint}")
+
+    def on_return_key(self, event: tk.Event) -> str | None:
+        focus = self.focus_get()
+        if focus in (self.description_text, self.snippet_text):
+            return None
+        if focus in self.edit_entries and focus is not self.search_entry:
+            return None
+        self.copy_selected()
+        return "break"
+
+    def on_save_key(self, _event: tk.Event) -> str:
+        self.save_current()
+        return "break"
+
+    def on_escape_key(self, event: tk.Event) -> str | None:
+        focus = self.focus_get()
+        if focus in (self.description_text, self.snippet_text):
+            return None
+        self.clear_search()
+        self.focus_search()
+        return "break"
+
+    def focus_listbox(self, event: tk.Event) -> str:
+        if not self.filtered_ids:
+            return "break"
+        if not self.listbox.curselection():
+            index = len(self.filtered_ids) - 1 if event.keysym == "Up" else 0
+            self.listbox.selection_set(index)
+            self.listbox.see(index)
+        self.listbox.focus_set()
+        return "break"
 
     def focus_search(self) -> None:
         self.search_entry.focus_set()
@@ -432,9 +590,6 @@ class App(tk.Tk):
         if self.status_after_id is not None:
             self.after_cancel(self.status_after_id)
         self.status_after_id = self.after(3000, lambda: self.status_var.set(DEFAULT_STATUS))
-
-    def snippet_has_footprint(self, snippet: str) -> bool:
-        return "property \"Footprint\"" in snippet and "property \"Footprint\" \"\"" not in snippet
 
     def on_close(self) -> None:
         if self.dirty and not self.confirm_unsaved_changes():

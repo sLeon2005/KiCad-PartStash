@@ -4,10 +4,34 @@ import re
 
 
 TEMPLATE_TOKEN_RE = re.compile(r"\{\{\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*\}\}")
+DERIVED_PIN_TOKENS = {"pins_2"}
 
 
 def find_template_tokens(snippet: str) -> list[str]:
     return sorted(set(TEMPLATE_TOKEN_RE.findall(snippet)))
+
+
+def required_template_fields(snippet: str, declared_fields: list[str]) -> list[str]:
+    tokens = set(find_template_tokens(snippet))
+    fields: list[str] = []
+
+    if "pins" in declared_fields or "pins" in tokens or tokens.intersection(DERIVED_PIN_TOKENS):
+        fields.append("pins")
+
+    for field in declared_fields:
+        if field not in fields:
+            fields.append(field)
+
+    for token in sorted(tokens):
+        if token in DERIVED_PIN_TOKENS or token in fields:
+            continue
+        fields.append(token)
+
+    return fields
+
+
+def unsupported_template_fields(fields: list[str]) -> list[str]:
+    return [field for field in fields if field != "pins"]
 
 
 def derived_values(values: dict[str, str]) -> dict[str, str]:

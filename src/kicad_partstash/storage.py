@@ -53,6 +53,28 @@ class PartStore:
         user_parts.pop(part_id, None)
         self._write_user_parts(user_parts.values())
 
+    def export_user_parts(self, path: Path) -> int:
+        user_parts = self.load_user_parts()
+        self._write_json(path, [part.to_dict() for part in user_parts])
+        return len(user_parts)
+
+    def import_user_parts(self, path: Path) -> int:
+        imported_parts = self._load_part_file(path, source="user")
+        user_parts = {part.id: part for part in self.load_user_parts()}
+        for part in imported_parts:
+            part.source = "user"
+            user_parts[part.id] = part
+        self._write_user_parts(user_parts.values())
+        return len(imported_parts)
+
+    def restore_default_overrides(self) -> int:
+        default_ids = self.default_ids()
+        user_parts = self.load_user_parts()
+        kept_parts = [part for part in user_parts if part.id not in default_ids]
+        removed_count = len(user_parts) - len(kept_parts)
+        self._write_user_parts(kept_parts)
+        return removed_count
+
     def load_recent_ids(self) -> list[str]:
         data = self._read_json(self.preferences_path, default={})
         recent_ids = data.get("recent_ids", []) if isinstance(data, dict) else []

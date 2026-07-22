@@ -6,6 +6,8 @@ Product principle: default parts must be copied and verified from KiCad 9. The a
 
 ## v0.0.1 - Research scaffold
 
+Status: complete.
+
 - Create the project structure.
 - Define the part JSON model.
 - Load bundled default parts and user overrides.
@@ -17,13 +19,20 @@ Product principle: default parts must be copied and verified from KiCad 9. The a
 
 ## v0.1.0 - Usable MVP
 
+Status: in progress.
+
 - Verify the first real KiCad 9 snippets.
-- Fill the initial default library with trusted parts.
+- Fill the initial default library with trusted resistor/capacitor parts.
 - Improve search ranking.
 - Add keyboard flow: search, enter to copy, escape to clear.
 - Keep notifications subtle and non-blocking.
+- Add snippet validation warnings.
+- Add import/export and restore defaults.
+- Add manual test checklist.
 
 ## v0.2.0 - Editable library
+
+Status: partially complete.
 
 - Add new user parts.
 - Edit names, categories, tags, symbols, footprints, and raw snippets.
@@ -34,12 +43,16 @@ Product principle: default parts must be copied and verified from KiCad 9. The a
 
 ## v0.3.0 - Header templates
 
+Status: partially complete.
+
 - Support 1xN vertical and horizontal headers.
 - Ask only for pin count.
 - Derive two-digit pin tokens such as `{{pins_2}}`.
 - Verify multiple pin counts in KiCad 9.
 
 ## v0.4.0 - UX pass
+
+Status: partially complete.
 
 - Improve layout polish.
 - Add better recent-part grouping.
@@ -48,11 +61,15 @@ Product principle: default parts must be copied and verified from KiCad 9. The a
 
 ## v0.5.0 - Ready blocks
 
+Status: planned.
+
 - Add an ATmega328P minimal block.
 - Include crystal, crystal capacitors, reset, ISP header, and useful net labels.
 - Verify block paste behavior in a clean KiCad 9 project.
 
 ## v1.0.0 - Portfolio release
+
+Status: planned.
 
 - Complete README.
 - Include verified default library.

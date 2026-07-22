@@ -3,6 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
+from .snippet_validation import validate_snippet
+
 
 @dataclass
 class Part:
@@ -84,5 +86,6 @@ class Part:
         return bool(self.snippet.strip())
 
     def has_footprint_hint(self) -> bool:
-        haystack = " ".join([self.footprint, self.snippet]).lower()
-        return "footprint" in haystack and "unassigned" not in haystack
+        if self.footprint.strip():
+            return True
+        return validate_snippet(self.snippet).has_assigned_footprint
