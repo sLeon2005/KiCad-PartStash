@@ -1,0 +1,165 @@
+(lib_symbols
+	(symbol "Device:R_Small_US"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0.254)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "R"
+			(at 0.762 0.508 0)
+			(effects
+				(font (size 1.27 1.27))
+				(justify left)
+			)
+		)
+		(property "Value" "R_Small_US"
+			(at 0.762 -1.016 0)
+			(effects
+				(font (size 1.27 1.27))
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font (size 1.27 1.27))
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font (size 1.27 1.27))
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small US symbol"
+			(at 0 0 0)
+			(effects
+				(font (size 1.27 1.27))
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "r resistor"
+			(at 0 0 0)
+			(effects
+				(font (size 1.27 1.27))
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "R_*"
+			(at 0 0 0)
+			(effects
+				(font (size 1.27 1.27))
+				(hide yes)
+			)
+		)
+		(symbol "R_Small_US_1_1"
+			(polyline
+				(pts
+					(xy 0 1.524) (xy 1.016 1.143) (xy 0 0.762) (xy -1.016 0.381) (xy 0 0)
+				)
+				(stroke (width 0) (type default))
+				(fill (type none))
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 1.016 -0.381) (xy 0 -0.762) (xy -1.016 -1.143) (xy 0 -1.524)
+				)
+				(stroke (width 0) (type default))
+				(fill (type none))
+			)
+			(pin passive line
+				(at 0 2.54 270)
+				(length 1.016)
+				(name "~"
+					(effects
+						(font (size 1.27 1.27))
+					)
+				)
+				(number "1"
+					(effects
+						(font (size 1.27 1.27))
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -2.54 90)
+				(length 1.016)
+				(name "~"
+					(effects
+						(font (size 1.27 1.27))
+					)
+				)
+				(number "2"
+					(effects
+						(font (size 1.27 1.27))
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+)
+(symbol
+	(lib_id "Device:R_Small_US")
+	(at 33.02 85.09 90)
+	(unit 1)
+	(exclude_from_sim no)
+	(in_bom yes)
+	(on_board yes)
+	(dnp no)
+	(uuid "f5a3b27b-a531-4a20-bdde-440baef737d7")
+	(property "Reference" "R7"
+		(at 33.02 78.74 90)
+		(effects
+			(font (size 1.27 1.27))
+		)
+	)
+	(property "Value" "2.2K"
+		(at 33.02 81.28 90)
+		(effects
+			(font (size 1.27 1.27))
+		)
+	)
+	(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+		(at 33.02 85.09 0)
+		(effects
+			(font (size 1.27 1.27))
+			(hide yes)
+		)
+	)
+	(property "Datasheet" "~"
+		(at 33.02 85.09 0)
+		(effects
+			(font (size 1.27 1.27))
+			(hide yes)
+		)
+	)
+	(property "Description" "Resistor, small US symbol"
+		(at 33.02 85.09 0)
+		(effects
+			(font (size 1.27 1.27))
+			(hide yes)
+		)
+	)
+	(pin "1"
+		(uuid "3b216342-dcfa-4060-be5d-4a1aae44cd6a")
+	)
+	(pin "2"
+		(uuid "fed51325-c13d-41ab-a074-824c9a096e31")
+	)
+	(instances
+		(project "driverTRIAC"
+			(path ""
+				(reference "R7")
+				(unit 1)
+			)
+		)
+	)
+)

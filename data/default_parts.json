@@ -1,0 +1,239 @@
+[
+  {
+    "id": "resistor-0805-handsolder",
+    "name": "Resistor 0805 Hand Solder",
+    "category": "Passives",
+    "tags": [
+      "resistor",
+      "0805",
+      "smd",
+      "handsolder"
+    ],
+    "symbol": "Device:R_Small_US",
+    "footprint": "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder",
+    "description": "Verified KiCad 9 resistor snippet using the small US resistor symbol and 0805 hand-solder footprint.",
+    "snippet": "(lib_symbols\n\t(symbol \"Device:R_Small_US\"\n\t\t(pin_numbers\n\t\t\t(hide yes)\n\t\t)\n\t\t(pin_names\n\t\t\t(offset 0.254)\n\t\t\t(hide yes)\n\t\t)\n\t\t(exclude_from_sim no)\n\t\t(in_bom yes)\n\t\t(on_board yes)\n\t\t(property \"Reference\" \"R\"\n\t\t\t(at 0.762 0.508 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Value\" \"R_Small_US\"\n\t\t\t(at 0.762 -1.016 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Footprint\" \"\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Datasheet\" \"~\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Description\" \"Resistor, small US symbol\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_keywords\" \"r resistor\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_fp_filters\" \"R_*\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(symbol \"R_Small_US_1_1\"\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 0 1.524) (xy 1.016 1.143) (xy 0 0.762) (xy -1.016 0.381) (xy 0 0)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy 0 0) (xy 1.016 -0.381) (xy 0 -0.762) (xy -1.016 -1.143) (xy 0 -1.524)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 0 2.54 270)\n\t\t\t\t(length 1.016)\n\t\t\t\t(name \"~\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 0 -2.54 90)\n\t\t\t\t(length 1.016)\n\t\t\t\t(name \"~\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t)\n\t\t(embedded_fonts no)\n\t)\n)\n(symbol\n\t(lib_id \"Device:R_Small_US\")\n\t(at 33.02 85.09 90)\n\t(unit 1)\n\t(exclude_from_sim no)\n\t(in_bom yes)\n\t(on_board yes)\n\t(dnp no)\n\t(uuid \"f5a3b27b-a531-4a20-bdde-440baef737d7\")\n\t(property \"Reference\" \"R7\"\n\t\t(at 33.02 78.74 90)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Value\" \"2.2K\"\n\t\t(at 33.02 81.28 90)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t)\n\t)\n\t(property \"Footprint\" \"Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder\"\n\t\t(at 33.02 85.09 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Datasheet\" \"~\"\n\t\t(at 33.02 85.09 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Description\" \"Resistor, small US symbol\"\n\t\t(at 33.02 85.09 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(pin \"1\"\n\t\t(uuid \"3b216342-dcfa-4060-be5d-4a1aae44cd6a\")\n\t)\n\t(pin \"2\"\n\t\t(uuid \"fed51325-c13d-41ab-a074-824c9a096e31\")\n\t)\n\t(instances\n\t\t(project \"driverTRIAC\"\n\t\t\t(path \"\"\n\t\t\t\t(reference \"R7\")\n\t\t\t\t(unit 1)\n\t\t\t)\n\t\t)\n\t)\n)\n",
+    "template_fields": [],
+    "default_template_values": {},
+    "verified_with": "KiCad 9",
+    "status": "verified",
+    "source": "default"
+  },
+  {
+    "id": "capacitor-0805-handsolder",
+    "name": "Capacitor 0805 Hand Solder",
+    "category": "Passives",
+    "tags": [
+      "capacitor",
+      "0805",
+      "smd",
+      "handsolder"
+    ],
+    "symbol": "Device:C_Small",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder",
+    "description": "Verified KiCad 9 capacitor snippet using the small capacitor symbol and 0805 hand-solder footprint.",
+    "snippet": "(lib_symbols\n\t(symbol \"Device:C_Small\"\n\t\t(pin_numbers\n\t\t\t(hide yes)\n\t\t)\n\t\t(pin_names\n\t\t\t(offset 0.254)\n\t\t\t(hide yes)\n\t\t)\n\t\t(exclude_from_sim no)\n\t\t(in_bom yes)\n\t\t(on_board yes)\n\t\t(property \"Reference\" \"C\"\n\t\t\t(at 0.254 1.778 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Value\" \"C_Small\"\n\t\t\t(at 0.254 -2.032 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(justify left)\n\t\t\t)\n\t\t)\n\t\t(property \"Footprint\" \"\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Datasheet\" \"~\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"Description\" \"Unpolarized capacitor, small symbol\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_keywords\" \"capacitor cap\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(property \"ki_fp_filters\" \"C_*\"\n\t\t\t(at 0 0 0)\n\t\t\t(effects\n\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t(hide yes)\n\t\t\t)\n\t\t)\n\t\t(symbol \"C_Small_0_1\"\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -1.524 0.508) (xy 1.524 0.508)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0.3048) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t\t(polyline\n\t\t\t\t(pts\n\t\t\t\t\t(xy -1.524 -0.508) (xy 1.524 -0.508)\n\t\t\t\t)\n\t\t\t\t(stroke (width 0.3302) (type default))\n\t\t\t\t(fill (type none))\n\t\t\t)\n\t\t)\n\t\t(symbol \"C_Small_1_1\"\n\t\t\t(pin passive line\n\t\t\t\t(at 0 2.54 270)\n\t\t\t\t(length 2.032)\n\t\t\t\t(name \"~\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"1\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t\t(pin passive line\n\t\t\t\t(at 0 -2.54 90)\n\t\t\t\t(length 2.032)\n\t\t\t\t(name \"~\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t\t(number \"2\"\n\t\t\t\t\t(effects\n\t\t\t\t\t\t(font (size 1.27 1.27))\n\t\t\t\t\t)\n\t\t\t\t)\n\t\t\t)\n\t\t)\n\t\t(embedded_fonts no)\n\t)\n)\n(symbol\n\t(lib_id \"Device:C_Small\")\n\t(at 19.05 106.68 0)\n\t(unit 1)\n\t(exclude_from_sim no)\n\t(in_bom yes)\n\t(on_board yes)\n\t(dnp no)\n\t(fields_autoplaced yes)\n\t(uuid \"d412f370-afa7-4abb-875a-ec5964ca343a\")\n\t(property \"Reference\" \"C99\"\n\t\t(at 21.59 105.4162 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(justify left)\n\t\t)\n\t)\n\t(property \"Value\" \"9999\"\n\t\t(at 21.59 107.9562 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(justify left)\n\t\t)\n\t)\n\t(property \"Footprint\" \"Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder\"\n\t\t(at 19.05 106.68 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Datasheet\" \"~\"\n\t\t(at 19.05 106.68 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(property \"Description\" \"Unpolarized capacitor, small symbol\"\n\t\t(at 19.05 106.68 0)\n\t\t(effects\n\t\t\t(font (size 1.27 1.27))\n\t\t\t(hide yes)\n\t\t)\n\t)\n\t(pin \"1\"\n\t\t(uuid \"4fc3bfcc-7959-4d3d-8cf7-cf3f917f6d49\")\n\t)\n\t(pin \"2\"\n\t\t(uuid \"fb0ecaf3-720f-4c2a-9bab-104cf351047e\")\n\t)\n\t(instances\n\t\t(project \"\"\n\t\t\t(path \"\"\n\t\t\t\t(reference \"C99\")\n\t\t\t\t(unit 1)\n\t\t\t)\n\t\t)\n\t)\n)\n",
+    "template_fields": [],
+    "default_template_values": {},
+    "verified_with": "KiCad 9",
+    "status": "verified",
+    "source": "default"
+  },
+  {
+    "id": "led-0805-handsolder",
+    "name": "LED 0805 Hand Solder",
+    "category": "Passives",
+    "tags": [
+      "led",
+      "0805",
+      "smd",
+      "handsolder"
+    ],
+    "symbol": "Device:LED",
+    "footprint": "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder",
+    "description": "Default target part. Capture and verify a real KiCad 9 clipboard snippet before using.",
+    "snippet": "",
+    "template_fields": [],
+    "default_template_values": {},
+    "verified_with": "KiCad 9",
+    "status": "needs_snippet"
+  },
+  {
+    "id": "pin-header-1xn-vertical-254",
+    "name": "Pin Header 1xN 2.54mm Vertical",
+    "category": "Connectors",
+    "tags": [
+      "header",
+      "pins",
+      "2.54mm",
+      "vertical"
+    ],
+    "symbol": "Connector_Generic:Conn_01x{{pins_2}}",
+    "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x{{pins_2}}_P2.54mm_Vertical",
+    "description": "Variable pin header. Only the pin count should be requested when copying.",
+    "snippet": "",
+    "template_fields": [
+      "pins"
+    ],
+    "default_template_values": {
+      "pins": "4"
+    },
+    "verified_with": "KiCad 9",
+    "status": "needs_snippet"
+  },
+  {
+    "id": "pin-header-1xn-horizontal-254",
+    "name": "Pin Header 1xN 2.54mm Horizontal",
+    "category": "Connectors",
+    "tags": [
+      "header",
+      "pins",
+      "2.54mm",
+      "horizontal"
+    ],
+    "symbol": "Connector_Generic:Conn_01x{{pins_2}}",
+    "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x{{pins_2}}_P2.54mm_Horizontal",
+    "description": "Variable pin header. Only the pin count should be requested when copying.",
+    "snippet": "",
+    "template_fields": [
+      "pins"
+    ],
+    "default_template_values": {
+      "pins": "4"
+    },
+    "verified_with": "KiCad 9",
+    "status": "needs_snippet"
+  },
+  {
+    "id": "terminal-block-508-2pin",
+    "name": "Terminal Block 5.08mm 2 Pin",
+    "category": "Connectors",
+    "tags": [
+      "terminal",
+      "screw",
+      "5.08mm",
+      "power"
+    ],
+    "symbol": "Connector_Generic:Conn_01x02",
+    "footprint": "TerminalBlock:TerminalBlock_*_P5.08mm",
+    "description": "Target part placeholder until the preferred KiCad 9 footprint is captured.",
+    "snippet": "",
+    "template_fields": [],
+    "default_template_values": {},
+    "verified_with": "KiCad 9",
+    "status": "needs_snippet"
+  },
+  {
+    "id": "atmega328p",
+    "name": "ATmega328P",
+    "category": "ICs",
+    "tags": [
+      "mcu",
+      "avr",
+      "arduino",
+      "atmega328p"
+    ],
+    "symbol": "MCU_Microchip_ATmega:ATmega328P-*",
+    "footprint": "",
+    "description": "Target part placeholder. Choose and capture the package you use most often.",
+    "snippet": "",
+    "template_fields": [],
+    "default_template_values": {},
+    "verified_with": "KiCad 9",
+    "status": "needs_snippet"
+  },
+  {
+    "id": "arduino-isp-header",
+    "name": "Arduino ISP Header",
+    "category": "Connectors",
+    "tags": [
+      "arduino",
+      "isp",
+      "programming",
+      "header"
+    ],
+    "symbol": "Connector_Generic:Conn_02x03_Odd_Even",
+    "footprint": "",
+    "description": "Target part placeholder for the 2x3 ISP connector you prefer.",
+    "snippet": "",
+    "template_fields": [],
+    "default_template_values": {},
+    "verified_with": "KiCad 9",
+    "status": "needs_snippet"
+  },
+  {
+    "id": "usb-b-female",
+    "name": "USB-B Female",
+    "category": "Connectors",
+    "tags": [
+      "usb",
+      "type-b",
+      "female"
+    ],
+    "symbol": "Connector:USB_B",
+    "footprint": "",
+    "description": "Target part placeholder until the exact connector footprint is captured.",
+    "snippet": "",
+    "template_fields": [],
+    "default_template_values": {},
+    "verified_with": "KiCad 9",
+    "status": "needs_snippet"
+  },
+  {
+    "id": "crystal-smd-16mhz",
+    "name": "SMD Crystal 16 MHz",
+    "category": "Passives",
+    "tags": [
+      "crystal",
+      "16mhz",
+      "smd",
+      "clock"
+    ],
+    "symbol": "Device:Crystal",
+    "footprint": "",
+    "description": "Target part placeholder until the exact SMD crystal package is captured.",
+    "snippet": "",
+    "template_fields": [],
+    "default_template_values": {},
+    "verified_with": "KiCad 9",
+    "status": "needs_snippet"
+  },
+  {
+    "id": "push-button",
+    "name": "Push Button",
+    "category": "Switches",
+    "tags": [
+      "button",
+      "switch",
+      "reset"
+    ],
+    "symbol": "Switch:SW_Push",
+    "footprint": "",
+    "description": "Target part placeholder until the preferred push button footprint is captured.",
+    "snippet": "",
+    "template_fields": [],
+    "default_template_values": {},
+    "verified_with": "KiCad 9",
+    "status": "needs_snippet"
+  },
+  {
+    "id": "atmega328p-minimal-block",
+    "name": "ATmega328P Minimal Block",
+    "category": "Ready Blocks",
+    "tags": [
+      "atmega328p",
+      "arduino",
+      "crystal",
+      "isp",
+      "reset"
+    ],
+    "symbol": "",
+    "footprint": "",
+    "description": "Future ready block: ATmega328P with 16 MHz crystal, reset, ISP header, and useful labels.",
+    "snippet": "",
+    "template_fields": [],
+    "default_template_values": {},
+    "verified_with": "KiCad 9",
+    "status": "planned"
+  }
+]
